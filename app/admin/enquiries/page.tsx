@@ -2,20 +2,20 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import {
-  ShieldCheck,
+  Inbox,
   Search,
   Filter,
   RefreshCw,
   Phone,
   Mail,
   Building,
-  Calendar,
-  Package,
-  CheckCircle2,
-  Clock,
-  ExternalLink,
-  Lock,
   Download,
+  CheckCircle,
+  Clock,
+  Package,
+  ExternalLink,
+  Eye,
+  X,
 } from 'lucide-react';
 import { Enquiry, EnquiryStatus } from '@/lib/types';
 
@@ -24,15 +24,11 @@ export default function AdminEnquiriesPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Security passcode protection
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [passcode, setPasscode] = useState('');
-  const [passcodeError, setPasscodeError] = useState(false);
-
   // Filters and search
   const [statusFilter, setStatusFilter] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
 
   const fetchAllEnquiries = async () => {
     setIsLoading(true);
@@ -53,28 +49,8 @@ export default function AdminEnquiriesPage() {
   };
 
   useEffect(() => {
-    // Check if previously logged in this session
-    if (typeof window !== 'undefined' && sessionStorage.getItem('hp_admin_auth') === 'true') {
-      setIsAuthenticated(true);
-      fetchAllEnquiries();
-    } else {
-      setIsLoading(false);
-    }
+    fetchAllEnquiries();
   }, []);
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Default passcode or custom passcode
-    if (passcode === 'hari2026admin' || passcode === 'admin') {
-      setIsAuthenticated(true);
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('hp_admin_auth', 'true');
-      }
-      fetchAllEnquiries();
-    } else {
-      setPasscodeError(true);
-    }
-  };
 
   const handleStatusChange = async (id: string, newStatus: EnquiryStatus) => {
     setUpdatingId(id);
@@ -89,6 +65,9 @@ export default function AdminEnquiriesPage() {
         setEnquiries((prev) =>
           prev.map((enq) => (enq.id === id ? { ...enq, status: newStatus } : enq))
         );
+        if (selectedEnquiry?.id === id) {
+          setSelectedEnquiry((prev) => prev ? { ...prev, status: newStatus } : null);
+        }
       }
     } catch (err) {
       console.error('Status update failed:', err);
@@ -118,7 +97,7 @@ export default function AdminEnquiriesPage() {
   }, [enquiries, statusFilter, searchQuery]);
 
   const exportCSV = () => {
-    const headers = ['ID', 'Date', 'Name', 'Phone', 'Email', 'Company', 'Type', 'Quantity', 'Status', 'Message', 'Source'];
+    const headers = ['ID', 'Date', 'Name', 'Phone', 'Email', 'Company', 'Type', 'Quantity', 'Status', 'Message', 'Source', 'Product'];
     const rows = filteredEnquiries.map((e) => [
       e.id,
       new Date(e.created_at).toISOString(),
@@ -131,6 +110,7 @@ export default function AdminEnquiriesPage() {
       `"${e.status}"`,
       `"${e.message.replace(/"/g, '""')}"`,
       `"${e.source_page}"`,
+      `"${(e.product_name || '').replace(/"/g, '""')}"`,
     ]);
 
     const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
@@ -143,78 +123,26 @@ export default function AdminEnquiriesPage() {
     document.body.removeChild(link);
   };
 
-  // Passcode login screen
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-[70vh] flex items-center justify-center px-4 py-16">
-        <div className="bg-white border border-[#E6DEC8] rounded-2xl p-8 max-w-md w-full shadow-lg space-y-6">
-          <div className="text-center space-y-2">
-            <div className="w-12 h-12 bg-[#FAF8F5] border border-[#C59B3F]/40 rounded-full flex items-center justify-center text-[#C59B3F] mx-auto">
-              <Lock className="w-6 h-6" />
-            </div>
-            <h2 className="font-serif text-2xl font-bold text-[#1A1412]">
-              HariPrasadam Admin Portal
-            </h2>
-            <p className="text-xs text-[#63574E]">
-              Enter the administration passcode to view customer enquiries.
-            </p>
-          </div>
-
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#4A3E37] mb-1">
-                Admin Passcode
-              </label>
-              <input
-                type="password"
-                value={passcode}
-                onChange={(e) => {
-                  setPasscode(e.target.value);
-                  setPasscodeError(false);
-                }}
-                placeholder="Enter passcode (e.g. hari2026admin)"
-                className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F5] border border-[#DDD4C3] rounded-md focus:outline-none focus:ring-1 focus:ring-[#C59B3F]"
-              />
-              {passcodeError && (
-                <p className="text-xs text-red-600 mt-1">
-                  Incorrect passcode. (Use: <code className="bg-red-50 px-1 py-0.5 rounded">hari2026admin</code>)
-                </p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-2.5 bg-[#1A1412] hover:bg-[#2C221E] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider rounded-md transition-colors"
-            >
-              Unlock Dashboard
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="space-y-6 pb-12">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[#E6DEC8]">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#E6DEC8]">
         <div>
-          <div className="flex items-center space-x-2 text-xs font-semibold text-[#C59B3F] uppercase tracking-widest mb-1">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Management Console</span>
-          </div>
-          <h1 className="font-serif text-3xl font-bold text-[#1A1412]">
-            Customer Enquiries Dashboard
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C59B3F]">
+            Lead Management
+          </span>
+          <h1 className="font-serif text-3xl font-bold text-[#1A1412] mt-0.5">
+            Customer Enquiries CRM
           </h1>
           <p className="text-xs text-[#63574E] mt-0.5">
-            Real-time lead tracking from website, product catalogues, and corporate pages.
+            Incoming orders and gifting requests captured with product and page context.
           </p>
         </div>
 
         <div className="flex items-center space-x-3">
           <button
             onClick={exportCSV}
-            className="inline-flex items-center px-3.5 py-2 bg-white border border-[#DDD4C3] hover:bg-[#FAF8F5] text-xs font-medium text-[#1A1412] rounded-md transition-colors shadow-2xs"
+            className="inline-flex items-center px-3.5 py-2 bg-white border border-[#DDD4C3] hover:bg-[#FAF8F5] text-xs font-semibold text-[#1A1412] rounded-md transition-colors shadow-2xs cursor-pointer"
           >
             <Download className="w-3.5 h-3.5 mr-1.5 text-[#C59B3F]" />
             <span>Export CSV</span>
@@ -222,7 +150,7 @@ export default function AdminEnquiriesPage() {
 
           <button
             onClick={fetchAllEnquiries}
-            className="inline-flex items-center px-3.5 py-2 bg-[#1A1412] text-[#FAF8F5] text-xs font-medium rounded-md hover:bg-[#2C221E] transition-colors"
+            className="inline-flex items-center px-3.5 py-2 bg-[#1A1412] text-[#FAF8F5] text-xs font-semibold rounded-md hover:bg-[#2C221E] transition-colors cursor-pointer"
           >
             <RefreshCw className={`w-3.5 h-3.5 mr-1.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
@@ -249,7 +177,6 @@ export default function AdminEnquiriesPage() {
 
       {/* Search and Filters Bar */}
       <div className="bg-white border border-[#E6DEC8] rounded-xl p-4 shadow-2xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-        {/* Status Filter Buttons */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
           {['All', 'New', 'Contacted', 'Quoted', 'Closed'].map((status) => {
             const isActive = statusFilter === status;
@@ -257,7 +184,7 @@ export default function AdminEnquiriesPage() {
               <button
                 key={status}
                 onClick={() => setStatusFilter(status)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide whitespace-nowrap transition-colors ${
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide whitespace-nowrap transition-colors cursor-pointer ${
                   isActive
                     ? 'bg-[#1A1412] text-[#FAF8F5]'
                     : 'bg-[#FAF8F5] text-[#5C5047] hover:bg-[#F2ECE1] border border-[#E6DEC8]'
@@ -269,7 +196,6 @@ export default function AdminEnquiriesPage() {
           })}
         </div>
 
-        {/* Search */}
         <div className="relative w-full sm:w-72">
           <Search className="w-3.5 h-3.5 text-[#8A7E75] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
@@ -282,7 +208,7 @@ export default function AdminEnquiriesPage() {
         </div>
       </div>
 
-      {/* Enquiries Table / Card List */}
+      {/* Enquiries Table */}
       <div className="bg-white border border-[#E6DEC8] rounded-xl overflow-hidden shadow-sm">
         {isLoading ? (
           <div className="p-16 text-center text-xs text-[#63574E]">
@@ -294,7 +220,7 @@ export default function AdminEnquiriesPage() {
               No enquiries found
             </p>
             <p className="text-xs text-[#63574E]">
-              Try clearing search filters or check back after visitors submit forms.
+              Try clearing search filters.
             </p>
           </div>
         ) : (
@@ -305,9 +231,9 @@ export default function AdminEnquiriesPage() {
                   <th className="py-3 px-4">Date / Time</th>
                   <th className="py-3 px-4">Customer Info</th>
                   <th className="py-3 px-4">Type & Quantity</th>
-                  <th className="py-3 px-4">Message / Requirement</th>
-                  <th className="py-3 px-4">Source Page</th>
+                  <th className="py-3 px-4">Message / Context</th>
                   <th className="py-3 px-4">Status</th>
+                  <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F2ECE1]">
@@ -322,7 +248,7 @@ export default function AdminEnquiriesPage() {
                       {/* Date */}
                       <td className="py-4 px-4 whitespace-nowrap align-top text-[#63574E]">
                         <span className="font-medium text-[#1A1412] block">{dateStr}</span>
-                        <span className="text-[10px] text-[#8A7E75] uppercase">{enq.id.slice(0, 8)}</span>
+                        <span className="text-[10px] text-[#8A7E75] uppercase font-mono">{enq.id.slice(0, 8)}</span>
                       </td>
 
                       {/* Customer info */}
@@ -373,15 +299,11 @@ export default function AdminEnquiriesPage() {
 
                       {/* Message */}
                       <td className="py-4 px-4 align-top max-w-xs">
-                        <p className="text-[#332A24] leading-relaxed line-clamp-4">
+                        <p className="text-[#332A24] leading-relaxed line-clamp-3">
                           {enq.message}
                         </p>
-                      </td>
-
-                      {/* Source */}
-                      <td className="py-4 px-4 align-top whitespace-nowrap text-[#7A6D63]">
-                        <span className="bg-[#FAF8F5] border border-[#E6DEC8] px-2 py-0.5 rounded font-mono text-[10px]">
-                          {enq.source_page}
+                        <span className="text-[10px] text-[#8A7E75] block mt-1">
+                          Source: {enq.source_page}
                         </span>
                       </td>
 
@@ -407,6 +329,17 @@ export default function AdminEnquiriesPage() {
                           <option value="Closed">Closed</option>
                         </select>
                       </td>
+
+                      {/* View Details */}
+                      <td className="py-4 px-4 text-right align-top whitespace-nowrap">
+                        <button
+                          onClick={() => setSelectedEnquiry(enq)}
+                          className="p-1.5 text-[#4A3E37] hover:text-[#1A1412] hover:bg-[#FAF8F5] rounded border border-[#DDD4C3] cursor-pointer"
+                          title="View Full Enquiry Details"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                        </button>
+                      </td>
                     </tr>
                   );
                 })}
@@ -415,6 +348,111 @@ export default function AdminEnquiriesPage() {
           </div>
         )}
       </div>
+
+      {/* Enquiry Details Modal */}
+      {selectedEnquiry && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+          <div className="bg-white border border-[#E6DEC8] rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[#F2ECE1]">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C59B3F]">
+                  Enquiry Details
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#1A1412]">
+                  {selectedEnquiry.name}
+                </h3>
+              </div>
+              <button
+                onClick={() => setSelectedEnquiry(null)}
+                className="p-1.5 rounded-full hover:bg-black/5 text-[#4A3E37]"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <span className="font-bold uppercase text-[#8A7E75] block">Phone Number</span>
+                  <a href={`tel:${selectedEnquiry.phone}`} className="text-sm font-semibold text-[#A85A2A] hover:underline">
+                    {selectedEnquiry.phone}
+                  </a>
+                </div>
+                <div>
+                  <span className="font-bold uppercase text-[#8A7E75] block">Email</span>
+                  <span className="text-sm font-medium text-[#1A1412]">
+                    {selectedEnquiry.email || 'Not provided'}
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <span className="font-bold uppercase text-[#8A7E75] block">Company</span>
+                  <span className="text-xs text-[#1A1412]">{selectedEnquiry.company || 'Not provided'}</span>
+                </div>
+                <div>
+                  <span className="font-bold uppercase text-[#8A7E75] block">Type</span>
+                  <span className="text-xs font-semibold text-[#C59B3F]">{selectedEnquiry.enquiry_type}</span>
+                </div>
+              </div>
+
+              {selectedEnquiry.quantity && (
+                <div>
+                  <span className="font-bold uppercase text-[#8A7E75] block">Estimated Quantity</span>
+                  <span className="text-xs text-[#1A1412] font-semibold">{selectedEnquiry.quantity}</span>
+                </div>
+              )}
+
+              {selectedEnquiry.product_name && (
+                <div>
+                  <span className="font-bold uppercase text-[#8A7E75] block">Enquired Product / Box</span>
+                  <span className="text-xs text-[#C59B3F] font-semibold">{selectedEnquiry.product_name}</span>
+                </div>
+              )}
+
+              <div>
+                <span className="font-bold uppercase text-[#8A7E75] block">Source Page</span>
+                <span className="text-xs font-mono text-[#4A3E37] bg-[#FAF8F5] px-2 py-0.5 rounded border border-[#E6DEC8]">
+                  {selectedEnquiry.source_page}
+                </span>
+              </div>
+
+              <div>
+                <span className="font-bold uppercase text-[#8A7E75] block mb-1">Customer Message</span>
+                <div className="p-3 bg-[#FAF8F5] border border-[#E6DEC8] rounded-lg text-xs leading-relaxed text-[#2E2621]">
+                  {selectedEnquiry.message}
+                </div>
+              </div>
+
+              <div className="pt-2 flex items-center justify-between border-t border-[#F2ECE1]">
+                <div className="flex items-center space-x-2">
+                  <span className="font-bold text-[#8A7E75]">Status:</span>
+                  <select
+                    value={selectedEnquiry.status}
+                    onChange={(e) => handleStatusChange(selectedEnquiry.id, e.target.value as EnquiryStatus)}
+                    className="text-xs font-semibold py-1 px-2 rounded border"
+                  >
+                    <option value="New">New</option>
+                    <option value="Contacted">Contacted</option>
+                    <option value="Quoted">Quoted</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                </div>
+
+                <a
+                  href={`https://wa.me/${selectedEnquiry.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(selectedEnquiry.name)},%20thank%20you%20for%20contacting%20HariPrasadam%20regarding%20your%20enquiry.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 bg-[#25D366] text-white font-semibold rounded text-xs flex items-center space-x-1"
+                >
+                  <span>WhatsApp Lead</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

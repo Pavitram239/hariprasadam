@@ -1,0 +1,1132 @@
+[
+  {
+    "name": "Test Imperial Saffron Pistachio",
+    "slug": "test-imperial-saffron-pistachio",
+    "category": "Almond",
+    "flavour": "Kesar Pistachio",
+    "image": "/images/products/almond-honey-rose.jpg",
+    "additionalImages": [],
+    "tagline": "Rare royal saffron roasted pistachio",
+    "description": "Exclusively crafted test product for automated verification.",
+    "isJain": true,
+    "isFeatured": false,
+    "tasteProfile": [
+      "Saffron",
+      "Rich",
+      "Earthy"
+    ],
+    "features": [
+      "100% Select Grade",
+      "Artisanal Spice Blend"
+    ],
+    "pairingSuggestions": [],
+    "idealFor": [],
+    "packagingOptions": [
+      "200g Luxury Glass Jar"
+    ],
+    "status": "draft",
+    "display_order": 99,
+    "id": "e8b9c858-281c-438f-a7ce-733821fdd44b",
+    "created_at": "2026-09-21T06:57:15.101Z",
+    "updated_at": "2026-09-21T06:57:15.101Z"
+  },
+  {
+    "id": "almond-plain",
+    "slug": "almond-plain",
+    "name": "Plain Roasted Almond",
+    "category": "Almond",
+    "flavour": "Plain",
+    "image": "/images/products/almond-plain.jpg",
+    "tagline": "Pure California Almonds • Clean Gentle Roast",
+    "description": "Carefully graded California almonds, slow dry-roasted to a golden crunch without unnecessary oils or heavy additives. Clean, wholesome, and pure.",
+    "tasteProfile": [
+      "Natural Nutty",
+      "Crisp Crunch",
+      "Earthy"
+    ],
+    "features": [
+      "100% Fresh Roasted",
+      "Zero Added Sugars",
+      "High Protein & Fibre"
+    ],
+    "pairingSuggestions": [
+      "Morning breakfast",
+      "Gifting jar sets",
+      "Pre-workout energy"
+    ],
+    "idealFor": [
+      "Health enthusiasts",
+      "Daily wellness",
+      "Executive gifting"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags",
+      "Bulk Vacuum Packs"
+    ],
+    "status": "published",
+    "isFeatured": true,
+    "additionalImages": [],
+    "display_order": 1,
+    "created_at": "2026-09-21T06:56:14.511Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "almond-dark",
+    "slug": "almond-dark",
+    "name": "Dark Chocolate Almond",
+    "category": "Almond",
+    "flavour": "Dark Chocolate",
+    "image": "/images/products/almond-dark.jpg",
+    "tagline": "Roasted Almonds • Enrobed in Intense Cocoa",
+    "description": "Crisp roasted almonds enrobed in a rich dark chocolate coating. Balanced sweetness meets deep cacao bitterness and nutty crunch.",
+    "tasteProfile": [
+      "Intense Cocoa",
+      "Subtle Bittersweet",
+      "Nutty Snap"
+    ],
+    "features": [
+      "Roasted to Order",
+      "Premium Cocoa Coating",
+      "Decadent Indulgence"
+    ],
+    "pairingSuggestions": [
+      "After-dinner dessert",
+      "Festive gifting",
+      "Artisan coffee"
+    ],
+    "idealFor": [
+      "Chocolate connoisseurs",
+      "Festive celebrations",
+      "Luxury gift hampers"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags",
+      "Bulk Packs"
+    ],
+    "status": "published",
+    "isFeatured": true,
+    "additionalImages": [],
+    "display_order": 2,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "almond-jamun",
+    "slug": "almond-jamun",
+    "name": "Almond Jamun",
+    "category": "Almond",
+    "flavour": "Jamun",
+    "image": "/images/products/almond-jamun.jpg",
+    "tagline": "Artisanal Indian Berry Glaze • Sweet & Tangy",
+    "description": "A distinctive Indian fusion treat: selected roasted almonds coated with an aromatic, mildly tangy natural jamun fruit glaze.",
+    "tasteProfile": [
+      "Sweet & Tangy",
+      "Fruity Aroma",
+      "Satisfying Crunch"
+    ],
+    "features": [
+      "Unique Regional Flavour",
+      "Fresh Coated",
+      "No Artificial Colours"
+    ],
+    "pairingSuggestions": [
+      "High tea pairing",
+      "Festive dessert tables"
+    ],
+    "idealFor": [
+      "Exotic flavour lovers",
+      "Artisan gift boxes"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Bulk Packs"
+    ],
+    "status": "published",
+    "isFeatured": true,
+    "additionalImages": [],
+    "display_order": 3,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "almond-lemon-chilly",
+    "slug": "almond-lemon-chilly",
+    "name": "Lemon Chilly Almond",
+    "category": "Almond",
+    "flavour": "Lemon Chilly Masala",
+    "image": "/images/products/almond-lemon-chilly.jpg",
+    "tagline": "Zesty Citrus • Mild Red Chilli Zing",
+    "description": "Crunchy slow-roasted almonds seasoned with zesty lemon essence and freshly ground spices with a gentle chilli kick.",
+    "tasteProfile": [
+      "Zesty Citrus",
+      "Chatpata Spice",
+      "Savory Crunch"
+    ],
+    "features": [
+      "Freshly Spiced",
+      "Roasted to Order",
+      "All-Natural Seasoning"
+    ],
+    "pairingSuggestions": [
+      "Evening drinks",
+      "Chatpata party platters",
+      "Travel snack"
+    ],
+    "idealFor": [
+      "Spicy food lovers",
+      "Entertaining guests",
+      "Signature corporate boxes"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": true,
+    "additionalImages": [],
+    "display_order": 4,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "almond-thandai-kesar",
+    "slug": "almond-thandai-kesar",
+    "name": "Almond Thandai Kesar",
+    "category": "Almond",
+    "flavour": "Thandai Kesar",
+    "image": "/images/products/almond-thandai-kesar.jpg",
+    "tagline": "Royal Saffron Infusion • Traditional Spice Symphony",
+    "description": "Steeped in royal heritage, these crunchy almonds are coated with fragrant saffron (kesar), cardamom, fennel, and royal thandai botanicals.",
+    "tasteProfile": [
+      "Kesar Fragrance",
+      "Cardamom Sweetness",
+      "Royal Festive Notes"
+    ],
+    "features": [
+      "Artisanal Festive Recipe",
+      "Pure Kesar Infused",
+      "Distinctive Golden Tone"
+    ],
+    "pairingSuggestions": [
+      "Holi & Diwali celebrations",
+      "Wedding welcomes",
+      "Traditional gifting"
+    ],
+    "idealFor": [
+      "Festive hampers",
+      "Wedding favours",
+      "Premium VIP guests"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": true,
+    "additionalImages": [],
+    "display_order": 5,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "almond-cheese-herbs",
+    "slug": "almond-cheese-herbs",
+    "name": "Cheese & Herbs Almond",
+    "category": "Almond",
+    "flavour": "Cheese & Herbs",
+    "image": "/images/products/almond-cheese-herbs.jpg",
+    "tagline": "Savory Herb Dusting • Mild Cheddar Accent",
+    "isJain": true,
+    "description": "Crisp dry-roasted almonds coated with a gentle, aromatic blend of oregano, rosemary, and savoury cheese seasoning. Pure Jain recipe.",
+    "tasteProfile": [
+      "Savory Cheese",
+      "Aromatic Herbs",
+      "Toasty Crisp"
+    ],
+    "features": [
+      "Pure Jain Friendly (J)",
+      "Roasted Without Oil",
+      "Appetizing Seasoning"
+    ],
+    "pairingSuggestions": [
+      "Grazing boards",
+      "Afternoon tea",
+      "Savoury gift hampers"
+    ],
+    "idealFor": [
+      "Jain community",
+      "Savoury snackers",
+      "Corporate desk gifting"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": true,
+    "additionalImages": [],
+    "display_order": 6,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "almond-honey-rose",
+    "slug": "almond-honey-rose",
+    "name": "Almond Honey Rose",
+    "category": "Almond",
+    "flavour": "Honey Rose",
+    "image": "/images/products/almond-honey-rose.jpg",
+    "tagline": "Sweet Floral Glaze • Damask Rose Essence",
+    "description": "HariPrasadam’s signature sweet creation. Roasted California almonds delicately glazed with amber honey and scented with real rose petals.",
+    "tasteProfile": [
+      "Delicate Floral",
+      "Warm Honey Nectar",
+      "Caramelized Snap"
+    ],
+    "features": [
+      "Signature Flagship Item",
+      "Natural Floral Glaze",
+      "Irresistible Aroma"
+    ],
+    "pairingSuggestions": [
+      "Celebratory desserts",
+      "Festive gifting",
+      "Espresso or green tea"
+    ],
+    "idealFor": [
+      "Luxury gifting",
+      "Weddings",
+      "Client appreciation"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 7,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "cashew-plain",
+    "slug": "cashew-plain",
+    "name": "Plain Roasted Cashew",
+    "category": "Cashew",
+    "flavour": "Plain",
+    "image": "/images/products/cashew-plain.jpg",
+    "tagline": "Jumbo W240 Whole Cashews • Buttery Crisp",
+    "description": "Whole, cream-white kernel-rich cashews, delicately roasted to release their natural oils and creamy sweetness without excessive heat.",
+    "tasteProfile": [
+      "Buttery Rich",
+      "Mellow Sweetness",
+      "Tender Crunch"
+    ],
+    "features": [
+      "Grade Selected Whole Kernels",
+      "100% Fresh Dry Roasted",
+      "No Artificial Additives"
+    ],
+    "pairingSuggestions": [
+      "Daily superfood bowl",
+      "Festive dry fruit boxes"
+    ],
+    "idealFor": [
+      "Purity purists",
+      "Daily nutrition",
+      "Executive gifts"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 8,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "cashew-dark-choco",
+    "slug": "cashew-dark-choco",
+    "name": "Dark Choco Cashew",
+    "category": "Cashew",
+    "flavour": "Dark Choco",
+    "image": "/images/products/cashew-dark-choco.jpg",
+    "tagline": "Creamy Cashew Whole • Bittersweet Chocolate Shell",
+    "description": "The natural buttery sweetness of whole cashews provides the perfect velvet foundation for a dense, silky dark chocolate coating.",
+    "tasteProfile": [
+      "Deep Cacao",
+      "Creamy Heart",
+      "Rich Velvet"
+    ],
+    "features": [
+      "Roasted & Coated to Order",
+      "Premium Dark Cacao",
+      "Gourmet Finish"
+    ],
+    "pairingSuggestions": [
+      "Dessert wine",
+      "Festive gatherings",
+      "Gourmet dessert platters"
+    ],
+    "idealFor": [
+      "Chocolate enthusiasts",
+      "Young executives",
+      "Holiday gifting"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 9,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "cashew-oreo",
+    "slug": "cashew-oreo",
+    "name": "Cashew Oreo",
+    "category": "Cashew",
+    "flavour": "Oreo",
+    "image": "/images/products/cashew-oreo.jpg",
+    "tagline": "Crushed Cookies & Cream • Buttery Cashew Core",
+    "description": "An indulgent modern favorite. Plump roasted cashews enrobed in a creamy white vanilla coating studded with genuine crunchy Oreo cookie crumbs.",
+    "tasteProfile": [
+      "Cookies & Cream",
+      "Vanilla Sweetness",
+      "Rich Cookie Crunch"
+    ],
+    "features": [
+      "Playful Modern Confection",
+      "Kid & Youth Favorite",
+      "Signature Treat"
+    ],
+    "pairingSuggestions": [
+      "Party snacking",
+      "Birthday hampers",
+      "Weekend indulgence"
+    ],
+    "idealFor": [
+      "Modern families",
+      "Festive treat boxes",
+      "Celebration gifts"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 10,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "cashew-lotus-biscoff",
+    "slug": "cashew-lotus-biscoff",
+    "name": "Cashew Lotus Biscoff",
+    "category": "Cashew",
+    "flavour": "Lotus Biscoff",
+    "image": "/images/products/cashew-lotus-biscoff.jpg",
+    "tagline": "Belgian Speculoos Spiced Caramel • Creamy Cashew",
+    "description": "Whole selected cashews glazed with velvety caramelized Lotus Biscoff spread and coated with crisp spiced cinnamon biscuit crumble.",
+    "tasteProfile": [
+      "Caramelized Cinnamon",
+      "Speculoos Spice",
+      "Creamy Nut Base"
+    ],
+    "features": [
+      "Global Trend Indulgence",
+      "Fresh Coated",
+      "Irresistible Gourmet Finish"
+    ],
+    "pairingSuggestions": [
+      "Cappuccino",
+      "Dessert tasting menu",
+      "Luxury gifting"
+    ],
+    "idealFor": [
+      "Gourmet foodies",
+      "Festive delight hampers",
+      "Corporate VIPs"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 11,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "cashew-lemon-chilly",
+    "slug": "cashew-lemon-chilly",
+    "name": "Cashew Lemon Chilly",
+    "category": "Cashew",
+    "flavour": "Lemon Chilly",
+    "image": "/images/products/cashew-lemon-chilly.jpg",
+    "tagline": "Tangy Lemon Twist • Spicy Green & Red Chilli",
+    "description": "Creamy cashews dusted with an invigorating spice rub of sun-dried tangy lemon extract, fiery crushed chilli, and subtle black salt.",
+    "tasteProfile": [
+      "Tangy Citrus",
+      "Piquant Chilli",
+      "Creamy Nut Contrast"
+    ],
+    "features": [
+      "Fresh Ground Spices",
+      "Oil-Free Roast",
+      "Chatpata Punch"
+    ],
+    "pairingSuggestions": [
+      "Evening drinks",
+      "Cocktail hours",
+      "Festive card parties"
+    ],
+    "idealFor": [
+      "Spice lovers",
+      "Chatpata combo boxes",
+      "Social gatherings"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 12,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "cashew-cheese-herbs",
+    "slug": "cashew-cheese-herbs",
+    "name": "Cashew Cheese & Herbs",
+    "category": "Cashew",
+    "flavour": "Cheese & Herbs",
+    "image": "/images/products/cashew-cheese-herbs.jpg",
+    "tagline": "Mediterranean Botanical Dusting • Pure Jain Formulation",
+    "isJain": true,
+    "description": "Carefully seasoned with Mediterranean dried herbs and savoury cheese seasoning, formulated strictly adhering to Jain dietary principles.",
+    "tasteProfile": [
+      "Mild Savory Cheese",
+      "Fragrant Parsley & Oregano",
+      "Rich Creamy Kernel"
+    ],
+    "features": [
+      "Pure Jain Friendly (J)",
+      "Zero Artificial Preservatives",
+      "Signature Savory Blend"
+    ],
+    "pairingSuggestions": [
+      "Appetizer platters",
+      "Corporate desk snacking",
+      "Jain celebratory boxes"
+    ],
+    "idealFor": [
+      "Jain community gifting",
+      "Savoury gift lovers",
+      "Executive suites"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 13,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "cashew-honey-rose",
+    "slug": "cashew-honey-rose",
+    "name": "Cashew Honey Rose",
+    "category": "Cashew",
+    "flavour": "Honey Rose",
+    "image": "/images/products/cashew-honey-rose.jpg",
+    "tagline": "Fragrant Rose Petals • Amber Honey Glaze",
+    "description": "Subtle sweet honey caramelization enfolding tender roasted cashews, finished with fine culinary rose essence for a regal Indian palate.",
+    "tasteProfile": [
+      "Floral Bloom",
+      "Nectar Honey",
+      "Soft Cashew Creaminess"
+    ],
+    "features": [
+      "Flagship Sweet Cashew",
+      "All-Natural Flavoring",
+      "Royal Presentation"
+    ],
+    "pairingSuggestions": [
+      "Traditional Diwali celebrations",
+      "Wedding trays",
+      "Cardamon chai"
+    ],
+    "idealFor": [
+      "Festive hampers",
+      "Wedding gifts",
+      "Family celebrations"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 14,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "dates-dark-choco",
+    "slug": "dates-dark-choco",
+    "name": "Dark Choco Dates",
+    "category": "Dates",
+    "flavour": "Dark Choco",
+    "image": "/images/products/dates-dark-choco.jpg",
+    "tagline": "Plump Medjool-Style Dates • Dipped in Dark Cocoa",
+    "description": "Juicy, caramel-toned dates hand-dipped in intense dark chocolate. A chewy, decadent treat rich in natural minerals and antioxidants.",
+    "tasteProfile": [
+      "Caramel Chew",
+      "Bittersweet Dark Chocolate",
+      "Deep Earthy Sweet"
+    ],
+    "features": [
+      "Seedless & Hand-Pitted",
+      "Rich Dark Coating",
+      "Natural Energy Booster"
+    ],
+    "pairingSuggestions": [
+      "Pre-workout energy",
+      "Ramadan & festive gifting",
+      "Post-meal sweet"
+    ],
+    "idealFor": [
+      "Health-conscious sweet lovers",
+      "Corporate gift boxes",
+      "Festive platters"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 15,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "dates-kunafa",
+    "slug": "dates-kunafa",
+    "name": "Dates Kunafa",
+    "category": "Dates",
+    "flavour": "Kunafa",
+    "image": "/images/products/dates-kunafa.jpg",
+    "tagline": "Middle Eastern Crisp Kataifi • Stuffed Date Delight",
+    "description": "Inspired by Middle Eastern patisserie. Sweet succulent dates enveloped in toasted golden shredded kataifi pastry and sweet aromatic cream.",
+    "tasteProfile": [
+      "Golden Pastry Crunch",
+      "Syrupy Date Flesh",
+      "Nutty Pistachio Essence"
+    ],
+    "features": [
+      "Signature Boutique Creation",
+      "Unique Texture Fusion",
+      "Showstopper Gift Item"
+    ],
+    "pairingSuggestions": [
+      "Festive dessert table",
+      "Middle Eastern themed gatherings"
+    ],
+    "idealFor": [
+      "Royal hampers",
+      "Connoisseurs of exotic desserts",
+      "Wedding trousseaus"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 16,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "dates-mix-assorted",
+    "slug": "dates-mix-assorted",
+    "name": "Dates Mix (Assorted)",
+    "category": "Dates",
+    "flavour": "Mix / Assorted",
+    "image": "/images/products/dates-mix-assorted.jpg",
+    "tagline": "Curated Assortment of Stuffed & Coated Dates",
+    "description": "A luxurious variety of select imported dates featuring roasted nut stuffings, exotic glazes, and dark chocolate enrobings in one box.",
+    "tasteProfile": [
+      "Multifaceted Sweetness",
+      "Crunchy Core",
+      "Soft Honey Chew"
+    ],
+    "features": [
+      "Handcrafted Assortment",
+      "Nutrient Rich",
+      "Vibrant Visual Appeal"
+    ],
+    "pairingSuggestions": [
+      "Family celebrations",
+      "Festive welcoming platters"
+    ],
+    "idealFor": [
+      "Festive sharing",
+      "Grand gifting collections"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 17,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "raisin-plain",
+    "slug": "raisin-plain",
+    "name": "Plain Sundried Raisin",
+    "category": "Raisin",
+    "flavour": "Plain",
+    "image": "/images/products/raisin-plain.jpg",
+    "tagline": "Golden Sundried Raisins • Naturally Sweet & Juicy",
+    "description": "Selected long-grained golden raisins dried under natural sunlight. Retains soft juiciness, natural fruit sugars, and vital iron.",
+    "tasteProfile": [
+      "Natural Tart-Sweet",
+      "Juicy Chew",
+      "Sun-Kissed Fruit"
+    ],
+    "features": [
+      "Naturally Processed",
+      "No Sulphur Whitening",
+      "Rich in Micronutrients"
+    ],
+    "pairingSuggestions": [
+      "Breakfast cereal",
+      "Baking and confectionery",
+      "Daily snacking"
+    ],
+    "idealFor": [
+      "Daily wellness",
+      "Kids nutrition",
+      "Wholesome pantry"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 18,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "raisin-dark-choco",
+    "slug": "raisin-dark-choco",
+    "name": "Dark Choco Raisin",
+    "category": "Raisin",
+    "flavour": "Dark Choco",
+    "image": "/images/products/raisin-dark-choco.jpg",
+    "tagline": "Tangy Plump Raisins • Glossy Dark Chocolate Shell",
+    "description": "Plump sun-dried raisins tumbled in micro-fine dark chocolate, providing a burst of juicy fruity tang beneath a smooth cocoa crunch.",
+    "tasteProfile": [
+      "Fruity Burst",
+      "Glossy Bittersweet Shell",
+      "Balanced Sweet-Tart"
+    ],
+    "features": [
+      "Double Tumbled Coating",
+      "Rich Antioxidant Pairing",
+      "Bite-Sized Indulgence"
+    ],
+    "pairingSuggestions": [
+      "Movie night snacking",
+      "Coffee break sweet treat"
+    ],
+    "idealFor": [
+      "Snack enthusiasts",
+      "Choco lover combos",
+      "Festive gifting"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 19,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "raisin-sahi-paan",
+    "slug": "raisin-sahi-paan",
+    "name": "Sahi Paan Raisin",
+    "category": "Raisin",
+    "flavour": "Sahi Paan",
+    "image": "/images/products/raisin-sahi-paan.jpg",
+    "tagline": "Royal Betel Leaf Essence • Gulkand & Mukhwas Infusion",
+    "description": "An iconic Indian palate cleanser. Golden juicy raisins infused with authentic Calcutta betel leaf essence, fragrant gulkand, and cooling menthol.",
+    "tasteProfile": [
+      "Aromatic Betel Leaf",
+      "Rose Petal Gulkand",
+      "Cooling Refreshing Finish"
+    ],
+    "features": [
+      "Authentic Indian Mukhwas Profile",
+      "Digestive & Refreshing",
+      "Customer Favorite"
+    ],
+    "pairingSuggestions": [
+      "Post-meal digestive",
+      "Traditional banquet mukhwas",
+      "Festive dinners"
+    ],
+    "idealFor": [
+      "Post-dinner hospitality",
+      "Festive hampers",
+      "Corporate gifting"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 20,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "hazelnut-dark-choco",
+    "slug": "hazelnut-dark-choco",
+    "name": "Dark Choco Hazelnut",
+    "category": "Hazelnut",
+    "flavour": "Dark Choco",
+    "image": "/images/products/hazelnut-dark-choco.jpg",
+    "tagline": "Roasted Whole Hazelnuts • Deep Dark Cocoa Layer",
+    "description": "Premium imported Turkish hazelnuts roasted to release their warm aromatic oils, enrobed in a velvety shell of bittersweet dark chocolate.",
+    "tasteProfile": [
+      "Warm Toasted Hazelnut",
+      "Deep Bittersweet Cocoa",
+      "Snap & Crunch"
+    ],
+    "features": [
+      "Imported Whole Hazelnuts",
+      "Rich European-Style Profile",
+      "Fresh Roasted"
+    ],
+    "pairingSuggestions": [
+      "Cappuccino",
+      "Dessert pairings",
+      "Luxury hamper centrepiece"
+    ],
+    "idealFor": [
+      "Executive clients",
+      "Luxury connoisseurs",
+      "Premium wedding gifting"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 21,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "hazelnut-malai-rose",
+    "slug": "hazelnut-malai-rose",
+    "name": "Hazelnut Malai Rose",
+    "category": "Hazelnut",
+    "flavour": "Malai Rose",
+    "image": "/images/products/hazelnut-malai-rose.jpg",
+    "tagline": "Velvety Cream Glaze • Exotic Rose Petal Finish",
+    "description": "A sublime luxury creation: select crisp hazelnuts coated in a creamy, velvety malai glaze kissed with fragrant damask rose oil.",
+    "tasteProfile": [
+      "Creamy Malai",
+      "Fragrant Damask Rose",
+      "Earthy Hazelnut Core"
+    ],
+    "features": [
+      "Signature Ultra-Luxury Flavour",
+      "Silky Mouthfeel",
+      "Unique Artisanal Recipe"
+    ],
+    "pairingSuggestions": [
+      "Royal weddings",
+      "Festive celebrations",
+      "VIP gifting"
+    ],
+    "idealFor": [
+      "High-end corporate gifts",
+      "Wedding guest boxes",
+      "Boutique hampers"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 22,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "mixes-dryfruit-muesli",
+    "slug": "mixes-dryfruit-muesli",
+    "name": "Dryfruit Muesli",
+    "category": "Mixes & Blends",
+    "flavour": "Muesli Crunch",
+    "image": "/images/products/mixes-dryfruit-muesli.jpg",
+    "tagline": "Rolled Grains • Abundant Roasted Nuts & Berries",
+    "description": "Wholesome everyday muesli blended with toasted oats, crunchy roasted almonds, cashews, raisins, and natural super seeds.",
+    "tasteProfile": [
+      "Toasted Grains",
+      "Natural Sweetness",
+      "Satisfying Multi-Texture"
+    ],
+    "features": [
+      "High Dietary Fibre",
+      "Sustained Energy",
+      "No Added Artificial Sugars"
+    ],
+    "pairingSuggestions": [
+      "Greek yogurt",
+      "Cold almond milk",
+      "Breakfast smoothie bowl"
+    ],
+    "idealFor": [
+      "Daily wellness",
+      "Healthy daily routine",
+      "Morning energy"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 23,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "mixes-5-seed-mix",
+    "slug": "mixes-5-seed-mix",
+    "name": "5 Seed Mix",
+    "category": "Mixes & Blends",
+    "flavour": "Roasted Seeds",
+    "image": "/images/products/mixes-5-seed-mix.jpg",
+    "tagline": "Pumpkin • Chia • Flax • Sunflower • Watermelon",
+    "description": "A powerhouse combination of five nutrient-dense seeds, dry-roasted with a pinch of Himalayan pink salt for daily mineral wellness.",
+    "tasteProfile": [
+      "Toasted Nutty",
+      "Light Savory Pinch",
+      "Crispy Seed Texture"
+    ],
+    "features": [
+      "Rich in Omega-3 & Zinc",
+      "Keto & Vegan Friendly",
+      "Oil-Free Roast"
+    ],
+    "pairingSuggestions": [
+      "Salad topper",
+      "Morning oats",
+      "Desk-side snacking"
+    ],
+    "idealFor": [
+      "Health & fitness lovers",
+      "Everyday nutrition",
+      "Wellness gift boxes"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 24,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "mixes-12-in-1-mix",
+    "slug": "mixes-12-in-1-mix",
+    "name": "12 in 1 Mix",
+    "category": "Mixes & Blends",
+    "flavour": "Vitality Blend",
+    "image": "/images/products/mixes-12-in-1-mix.jpg",
+    "tagline": "The Ultimate Gourmet Fusion • 12 Premium Ingredients",
+    "description": "HariPrasadam’s grand vitality blend combining roasted nuts, dried fruits, berries, and super seeds in balanced nutritional harmony.",
+    "tasteProfile": [
+      "Dynamic Sweet & Savory",
+      "Varied Multi-Crunch",
+      "Fruity & Nutty"
+    ],
+    "features": [
+      "12 Synergistic Ingredients",
+      "Complete Daily Micro-Nutrition",
+      "Crowd Favorite"
+    ],
+    "pairingSuggestions": [
+      "All-day grazing",
+      "Hiking & travel",
+      "Festive gifting jar"
+    ],
+    "idealFor": [
+      "Family sharing",
+      "Corporate snack stations",
+      "Signature gift hampers"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Custom Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 25,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "mixes-9-in-1-breakfast",
+    "slug": "mixes-9-in-1-breakfast",
+    "name": "9 in 1 Breakfast Mix",
+    "category": "Mixes & Blends",
+    "flavour": "Breakfast Mix",
+    "image": "/images/products/mixes-9-in-1-breakfast.jpg",
+    "tagline": "Smart Nutrition • Morning Vitality Blend",
+    "description": "Designed for a healthy morning kickstart. Combines energy-giving roasted nuts, seeds, and dried fruits to fuel active days.",
+    "tasteProfile": [
+      "Wholesome Earthy",
+      "Gentle Natural Sweetness",
+      "Crunchy Snap"
+    ],
+    "features": [
+      "High Protein & Fiber",
+      "Zero Cholesterol",
+      "Slow-Burning Energy"
+    ],
+    "pairingSuggestions": [
+      "Pre-work breakfast",
+      "Post-workout fuel"
+    ],
+    "idealFor": [
+      "Busy professionals",
+      "Fitness routines",
+      "Wellness hampers"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 26,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  },
+  {
+    "id": "mixes-mix-trail",
+    "slug": "mixes-mix-trail",
+    "name": "Mix Trail",
+    "category": "Mixes & Blends",
+    "flavour": "Trail Mix",
+    "image": "/images/products/mixes-mix-trail.jpg",
+    "tagline": "Gourmet Crunch Trail • Roasted Nuts & Juicy Fruits",
+    "description": "An artisanal trail mix crafted with roasted nuts, sweet raisins, seeds, and light savoury hints to keep cravings satisfied anytime.",
+    "tasteProfile": [
+      "Salty-Sweet Harmony",
+      "Hearty Nut Crunch",
+      "Chewy Fruit Bits"
+    ],
+    "features": [
+      "Fresh Dry Roasted",
+      "Balanced Energy Snack",
+      "Versatile Gifting Favorite"
+    ],
+    "pairingSuggestions": [
+      "Afternoon coffee",
+      "Travel companion",
+      "Gift box filler"
+    ],
+    "idealFor": [
+      "Snack lovers",
+      "Gift boxes",
+      "Active lifestyles"
+    ],
+    "packagingOptions": [
+      "Glass Jars (175g–200g)",
+      "Gift Box Compartments",
+      "Jute Bags"
+    ],
+    "status": "published",
+    "isFeatured": false,
+    "additionalImages": [],
+    "display_order": 27,
+    "created_at": "2026-09-21T06:56:14.512Z",
+    "updated_at": "2026-09-21T06:56:14.512Z"
+  }
+]

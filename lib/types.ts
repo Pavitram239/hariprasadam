@@ -4,7 +4,10 @@ export type ProductCategory =
   | 'Dates'
   | 'Raisin'
   | 'Hazelnut'
-  | 'Mixes & Blends';
+  | 'Mixes & Blends'
+  | string;
+
+export type ContentStatus = 'published' | 'draft' | 'archived';
 
 export interface Product {
   id: string;
@@ -13,14 +16,33 @@ export interface Product {
   category: ProductCategory;
   flavour: string;
   image: string;
+  additionalImages?: string[];
   tagline: string;
   description: string;
   isJain?: boolean;
+  isFeatured?: boolean;
   tasteProfile: string[];
   features: string[];
   pairingSuggestions?: string[];
   idealFor: string[];
   packagingOptions: string[];
+  status?: ContentStatus;
+  display_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  tagline: string;
+  description: string;
+  image: string;
+  display_order: number;
+  status: 'published' | 'draft';
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ComboItem {
@@ -34,6 +56,11 @@ export interface ComboItem {
     isJain?: boolean;
   }[];
   occasion: string;
+  image?: string;
+  status?: ContentStatus;
+  display_order?: number;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface GiftBox {
@@ -46,11 +73,16 @@ export interface GiftBox {
   jarWeight: string;
   price: number; // in INR
   image: string;
+  additionalImages?: string[];
   presentation: string[];
   curatedItems: string[];
   giftingNote: string[];
   idealFor: string[];
   badge?: string;
+  status?: ContentStatus;
+  display_order?: number;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface PackagingOption {
@@ -62,6 +94,19 @@ export interface PackagingOption {
   weight: string;
   items: string[];
   tag?: string;
+  status?: ContentStatus;
+  display_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface MediaItem {
+  id: string;
+  url: string;
+  filename: string;
+  size: number;
+  mimeType: string;
+  created_at: string;
 }
 
 export type EnquiryType =

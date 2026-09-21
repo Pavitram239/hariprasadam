@@ -1,0 +1,205 @@
+[
+  {
+    "id": "gift-box-01",
+    "slug": "gift-box-01",
+    "code": "01",
+    "title": "Premium Dry Fruit Combo",
+    "subtitle": "5 Jar Gift Box",
+    "jarsCount": 5,
+    "jarWeight": "175–200 g each",
+    "price": 1530,
+    "image": "/images/gifting/gift-box-01.jpg",
+    "badge": "Popular Choice",
+    "presentation": [
+      "Premium gold-embossed presentation box",
+      "Curated glass jar assortment",
+      "Protective cushioned partitions",
+      "Suitable for festive & corporate gifting"
+    ],
+    "curatedItems": [
+      "Almond Honey Rose (175–200g)",
+      "Cashew Cheese & Herbs (175–200g)",
+      "Mix Trail (175–200g)",
+      "Sahi Paan Raisin (175–200g)",
+      "Plain California Almond (175–200g)"
+    ],
+    "giftingNote": [
+      "Elegant presentation designed to impress",
+      "Curated harmony of savoury, sweet & wholesome",
+      "Premium tactile finish with gold accents"
+    ],
+    "idealFor": [
+      "Festive Family Gifting",
+      "Corporate Client Gifts",
+      "Diwali Celebrations"
+    ],
+    "status": "published",
+    "display_order": 1,
+    "additionalImages": [],
+    "created_at": "2026-09-21T06:56:14.515Z",
+    "updated_at": "2026-09-21T06:56:14.515Z"
+  },
+  {
+    "id": "gift-box-02",
+    "slug": "gift-box-02",
+    "code": "02",
+    "title": "Premium Dry Fruit & Treats Combo",
+    "subtitle": "5 Jar Gift Box",
+    "jarsCount": 5,
+    "jarWeight": "175–200 g each",
+    "price": 1675,
+    "image": "/images/gifting/gift-box-02.jpg",
+    "badge": "5 Exquisite Flavours",
+    "presentation": [
+      "Rigid luxury slip-cover gift box",
+      "Curated 5-jar artisanal assortment",
+      "Satin ribbon detailing and branding seal",
+      "Designed for executive & celebration gifting"
+    ],
+    "curatedItems": [
+      "12 in 1 Vitality Mix (175–200g)",
+      "Raisin Sahi Paan (175–200g)",
+      "Hazelnut Malai Rose (175–200g)",
+      "Cashew Cheese & Herb (175–200g)",
+      "Almond Dark Chocolate (175–200g)"
+    ],
+    "giftingNote": [
+      "A healthy indulgence meeting decadent treats",
+      "Flavours curated to suit multi-generational taste",
+      "Handcrafted packaging with luxury tactile feel"
+    ],
+    "idealFor": [
+      "Executive Corporate Hampers",
+      "Wedding Welcomes",
+      "Milestone Celebrations"
+    ],
+    "status": "published",
+    "display_order": 2,
+    "additionalImages": [],
+    "created_at": "2026-09-21T06:56:14.515Z",
+    "updated_at": "2026-09-21T06:56:14.515Z"
+  },
+  {
+    "id": "gift-box-03",
+    "slug": "gift-box-03",
+    "code": "03",
+    "title": "Premium Nuts & Treats",
+    "subtitle": "6 Jar Gift Box",
+    "jarsCount": 6,
+    "jarWeight": "175–200 g each",
+    "price": 1850,
+    "image": "/images/gifting/gift-box-03.jpg",
+    "badge": "6 Exquisite Flavours",
+    "presentation": [
+      "Spacious double-row 6-jar luxury box",
+      "Gold foil emblem with HariPrasadam signature",
+      "Padded lid with elegant interior ribbon",
+      "Perfect balance of tradition & wellness"
+    ],
+    "curatedItems": [
+      "12 in 1 Mix (175–200g)",
+      "Raisin Sahi Paan (175–200g)",
+      "Almond Malai Rose (175–200g)",
+      "Cashew Dark Chocolate (175–200g)",
+      "Dates Assorted (175–200g)",
+      "Almond Thandai Kesar (175–200g)"
+    ],
+    "giftingNote": [
+      "Six unique flavours in one memorable box",
+      "Share goodness. Share happiness.",
+      "Signature presentation designed to be remembered"
+    ],
+    "idealFor": [
+      "High-Value Corporate Clients",
+      "Diwali Grand Hampers",
+      "Wedding Trousseau"
+    ],
+    "status": "published",
+    "display_order": 3,
+    "additionalImages": [],
+    "created_at": "2026-09-21T06:56:14.515Z",
+    "updated_at": "2026-09-21T06:56:14.515Z"
+  },
+  {
+    "id": "gift-box-04",
+    "slug": "gift-box-04",
+    "code": "04",
+    "title": "Premium Nuts & Treats",
+    "subtitle": "6 Jar Gift Box",
+    "jarsCount": 6,
+    "jarWeight": "175–200 g each",
+    "price": 1875,
+    "image": "/images/gifting/gift-box-04.jpg",
+    "badge": "Six Special Flavours",
+    "presentation": [
+      "Customized compartmentalized gift trunk",
+      "Gold foil embossed branding",
+      "Airtight glass jars with golden metal lids",
+      "Suitable for elite corporate and personal gifting"
+    ],
+    "curatedItems": [
+      "Cashew Cheese & Herbs (175–200g)",
+      "Dates Kunafa (175–200g)",
+      "Almond Honey Rose (175–200g)",
+      "Raisin Sahi Paan (175–200g)",
+      "Hazelnut Malai Rose (175–200g)",
+      "12 in 1 Vitality Mix (175–200g)"
+    ],
+    "giftingNote": [
+      "Six special flavours, one memorable box",
+      "Goodness in every bite",
+      "Refined finish crafted for discerning recipients"
+    ],
+    "idealFor": [
+      "Boardroom Gifting",
+      "VIP Wedding Guests",
+      "Annual Festive Appreciation"
+    ],
+    "status": "published",
+    "display_order": 4,
+    "additionalImages": [],
+    "created_at": "2026-09-21T06:56:14.515Z",
+    "updated_at": "2026-09-21T06:56:14.515Z"
+  },
+  {
+    "id": "gift-box-05",
+    "slug": "gift-box-05",
+    "code": "05",
+    "title": "Premium Nuts & Treats",
+    "subtitle": "6 Jar Gift Box",
+    "jarsCount": 6,
+    "jarWeight": "175–200 g each",
+    "price": 1975,
+    "image": "/images/gifting/gift-box-05.jpg",
+    "badge": "The Grand Collection",
+    "presentation": [
+      "Flagship 6-jar presentation box",
+      "Opulent textured outer casing with gold inlay",
+      "Individual jar pedestals with velvet cushioning",
+      "The pinnacle of HariPrasadam gifting art"
+    ],
+    "curatedItems": [
+      "Dates Kunafa / Assorted (175–200g)",
+      "Raisin Sahi Paan (175–200g)",
+      "Cashew Cheese & Herb (175–200g)",
+      "Hazelnut Malai Rose (175–200g)",
+      "Almond Dark Chocolate (175–200g)",
+      "12 in 1 Mix Trail (175–200g)"
+    ],
+    "giftingNote": [
+      "Nutrition, taste, tradition together",
+      "Our most comprehensive and luxurious assortment",
+      "Leaves an indelible impression of prestige"
+    ],
+    "idealFor": [
+      "Top-tier Leadership Gifts",
+      "Royal Celebrations",
+      "Luxury Hampers"
+    ],
+    "status": "published",
+    "display_order": 5,
+    "additionalImages": [],
+    "created_at": "2026-09-21T06:56:14.515Z",
+    "updated_at": "2026-09-21T06:56:14.515Z"
+  }
+]

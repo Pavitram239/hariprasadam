@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next';
-import { PRODUCTS } from '@/lib/productsData';
+import { getProducts } from '@/lib/cmsStorage';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = 'force-dynamic';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.hariprasadam.com';
 
   const staticPages = [
@@ -18,12 +20,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  const productPages = PRODUCTS.map((product) => ({
-    url: `${baseUrl}/products/${product.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
+  try {
+    const products = await getProducts({ status: 'published' });
+    const productPages = products.map((product) => ({
+      url: `${baseUrl}/products/${product.slug}`,
+      lastModified: product.updated_at ? new Date(product.updated_at) : new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
 
-  return [...staticPages, ...productPages];
+    return [...staticPages, ...productPages];
+  } catch (err) {
+    console.error('Error generating sitemap:', err);
+    return staticPages;
+  }
 }

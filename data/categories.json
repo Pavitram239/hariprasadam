@@ -1,0 +1,74 @@
+[
+  {
+    "id": "cat-almond",
+    "name": "Almond",
+    "slug": "almond",
+    "tagline": "PREMIUM ROASTED SELECTION",
+    "description": "Crisp California-grade almonds roasted to perfection and coated in artisanal savoury, sweet and Indian flavours.",
+    "image": "/images/categories/almond-cat.jpg",
+    "display_order": 1,
+    "status": "published",
+    "created_at": "2026-09-21T06:56:14.514Z",
+    "updated_at": "2026-09-21T06:56:14.514Z"
+  },
+  {
+    "id": "cat-cashew",
+    "name": "Cashew",
+    "slug": "cashew",
+    "tagline": "CREAMY & KERNEL RICH",
+    "description": "Plump premium whole cashews coated in rich indulgence, from herb-infused savoury seasonings to Lotus Biscoff and Oreo.",
+    "image": "/images/categories/cashew-cat.jpg",
+    "display_order": 2,
+    "status": "published",
+    "created_at": "2026-09-21T06:56:14.514Z",
+    "updated_at": "2026-09-21T06:56:14.514Z"
+  },
+  {
+    "id": "cat-dates",
+    "name": "Dates",
+    "slug": "dates",
+    "tagline": "RICH & CHOCOLATE DIPPED",
+    "description": "Luscious imported dates filled and dipped in rich dark chocolate, authentic Kunafa crunch, and curated assorted delights.",
+    "image": "/images/categories/dates-cat.jpg",
+    "display_order": 3,
+    "status": "published",
+    "created_at": "2026-09-21T06:56:14.514Z",
+    "updated_at": "2026-09-21T06:56:14.514Z"
+  },
+  {
+    "id": "cat-raisin",
+    "name": "Raisin",
+    "slug": "raisin",
+    "tagline": "SUNDRIED & FLAVOURED",
+    "description": "Plump sundried raisins transformed with royal Sahi Paan infusion, dark chocolate coating, and wholesome natural sweetness.",
+    "image": "/images/categories/raisin-cat.jpg",
+    "display_order": 4,
+    "status": "published",
+    "created_at": "2026-09-21T06:56:14.514Z",
+    "updated_at": "2026-09-21T06:56:14.514Z"
+  },
+  {
+    "id": "cat-hazelnut",
+    "name": "Hazelnut",
+    "slug": "hazelnut",
+    "tagline": "RARE & INDULGENT",
+    "description": "Select Turkish hazelnuts roasted and enveloped in silky Malai Rose and decadent dark chocolate.",
+    "image": "/images/categories/hazelnut-cat.jpg",
+    "display_order": 5,
+    "status": "published",
+    "created_at": "2026-09-21T06:56:14.514Z",
+    "updated_at": "2026-09-21T06:56:14.514Z"
+  },
+  {
+    "id": "cat-mixes-blends",
+    "name": "Mixes & Blends",
+    "slug": "mixes-blends",
+    "tagline": "WHOLESOME EVERYDAY MIXES",
+    "description": "Power-packed gourmet seed mixes, crunch trails, 12-in-1 vitality blends, and artisan dryfruit muesli.",
+    "image": "/images/categories/mixes-cat.jpg",
+    "display_order": 6,
+    "status": "published",
+    "created_at": "2026-09-21T06:56:14.514Z",
+    "updated_at": "2026-09-21T06:56:14.514Z"
+  }
+]
