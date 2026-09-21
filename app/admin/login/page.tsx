@@ -14,6 +14,7 @@ export default function AdminLoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsLoading(true);
     setError(null);
 
@@ -21,7 +22,10 @@ export default function AdminLoginPage() {
       const res = await fetch('/api/admin/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          email: email.trim(),
+          password: password.trim(),
+        }),
       });
 
       const data = await res.json();
@@ -29,11 +33,10 @@ export default function AdminLoginPage() {
         throw new Error(data.error || 'Invalid credentials');
       }
 
-      router.push('/admin');
-      router.refresh();
+      // Use full page location redirect to guarantee fresh cookie headers and layout load
+      window.location.href = '/admin';
     } catch (err: any) {
       setError(err.message || 'Login failed. Please verify your credentials.');
-    } finally {
       setIsLoading(false);
     }
   };
@@ -67,7 +70,12 @@ export default function AdminLoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          action="javascript:void(0);"
+          method="POST"
+          className="space-y-4"
+        >
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-[#4A3E37] mb-1.5">
               Admin Email
@@ -76,6 +84,8 @@ export default function AdminLoginPage() {
               <Mail className="w-4 h-4 text-[#8A7E75] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="email"
+                name="email"
+                autoComplete="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -93,6 +103,8 @@ export default function AdminLoginPage() {
               <Lock className="w-4 h-4 text-[#8A7E75] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="password"
+                name="password"
+                autoComplete="current-password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
