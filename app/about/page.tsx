@@ -2,15 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Sparkles, MapPin, Phone, Mail, ShieldCheck, CheckCircle2, Heart, Award, ArrowRight } from 'lucide-react';
+import { Sparkles, ShieldCheck, CheckCircle2, Heart, Award } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
-import { useEnquiry } from '@/components/EnquiryContext';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function AboutPage() {
-  const { openEnquiryModal } = useEnquiry();
-
   return (
     <div className="space-y-20 sm:space-y-28 pb-24">
       {/* Hero */}
@@ -159,7 +155,7 @@ export default function AboutPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white border border-[#E6DEC8] rounded-2xl p-8 sm:p-10 shadow-sm space-y-6">
           <div className="text-center space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#C59B3F]">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C59B3F]">
               Registered Information
             </span>
             <h3 className="font-serif text-3xl font-bold text-[#1A1412]">
@@ -200,13 +196,13 @@ export default function AboutPage() {
           </div>
 
           <div className="pt-4 text-center">
-            <button
-              onClick={() => openEnquiryModal({ enquiryType: 'Corporate Gifting', sourcePage: '/about' })}
-              className="px-6 py-3 bg-[#1A1412] hover:bg-[#2C221E] text-[#FAF8F5] text-xs font-semibold rounded-md transition-colors inline-flex items-center space-x-2"
-            >
-              <span>Connect with HariPrasadam</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#C59B3F]" />
-            </button>
+            <WhatsAppButton
+              type="general"
+              label="Connect with HariPrasadam on WhatsApp"
+              variant="primary"
+              size="lg"
+              className="font-semibold shadow-sm"
+            />
           </div>
         </div>
       </section>

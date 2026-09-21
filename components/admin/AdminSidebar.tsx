@@ -26,7 +26,6 @@ const ADMIN_NAV = [
   { name: 'Categories', href: '/admin/categories', icon: Layers },
   { name: 'Gift Collections', href: '/admin/gifting', icon: Gift },
   { name: 'Signature Combos', href: '/admin/combos', icon: Boxes },
-  { name: 'Enquiries', href: '/admin/enquiries', icon: Inbox },
   { name: 'Media Library', href: '/admin/media', icon: ImageIcon },
   { name: 'Settings', href: '/admin/settings', icon: Settings },
 ];

@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   ArrowLeft,
+  ArrowUp,
+  ArrowDown,
+  Images,
   Upload,
   Plus,
   Trash2,
@@ -84,10 +87,13 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
 
   // Upload & UI states
   const [isUploading, setIsUploading] = useState(false);
+  const [isGalleryUploading, setIsGalleryUploading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewActiveImage, setPreviewActiveImage] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const galleryFileInputRef = useRef<HTMLInputElement>(null);
 
   // Helper for slug generation
   const handleNameChange = (val: string) => {
@@ -127,7 +133,36 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
     setter((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Image Upload handler
+  // Gallery image reordering & removing
+  const moveGalleryImage = (index: number, direction: 'up' | 'down') => {
+    setAdditionalImages((prev) => {
+      const targetIndex = direction === 'up' ? index - 1 : index + 1;
+      if (targetIndex < 0 || targetIndex >= prev.length) return prev;
+      const copy = [...prev];
+      const temp = copy[index];
+      copy[index] = copy[targetIndex];
+      copy[targetIndex] = temp;
+      return copy;
+    });
+  };
+
+  const removeGalleryImage = (index: number) => {
+    setAdditionalImages((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const addGalleryImageUrl = () => {
+    setAdditionalImages((prev) => [...prev, '']);
+  };
+
+  const updateGalleryImageUrl = (index: number, url: string) => {
+    setAdditionalImages((prev) => {
+      const copy = [...prev];
+      copy[index] = url;
+      return copy;
+    });
+  };
+
+  // Main Image Upload handler
   const handleImageFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -156,6 +191,46 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = '';
+    }
+  };
+
+  // Gallery Images Upload handler
+  const handleGalleryFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    setIsGalleryUploading(true);
+    setFeedback(null);
+
+    try {
+      const uploadedUrls: string[] = [];
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const res = await fetch('/api/admin/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || `Upload failed for ${file.name}`);
+        }
+        uploadedUrls.push(data.url);
+      }
+
+      setAdditionalImages((prev) => [...prev, ...uploadedUrls]);
+      setFeedback({
+        message: `${uploadedUrls.length} gallery image(s) uploaded successfully!`,
+        type: 'success',
+      });
+    } catch (err: any) {
+      setFeedback({ message: err.message || 'Gallery upload failed', type: 'error' });
+    } finally {
+      setIsGalleryUploading(false);
+      if (galleryFileInputRef.current) galleryFileInputRef.current.value = '';
     }
   };
 
@@ -557,6 +632,82 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
                 ))}
               </div>
             </div>
+
+            {/* Pairing Suggestions */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-xs font-semibold uppercase tracking-wider text-[#4A3E37]">
+                  Pairing Suggestions
+                </label>
+                <button
+                  type="button"
+                  onClick={() => addListFieldItem(setPairingSuggestions)}
+                  className="text-xs text-[#A85A2A] hover:underline flex items-center cursor-pointer"
+                >
+                  <Plus className="w-3.5 h-3.5 mr-0.5" />
+                  <span>Add Pairing</span>
+                </button>
+              </div>
+
+              <div className="space-y-2">
+                {pairingSuggestions.map((item, idx) => (
+                  <div key={idx} className="flex items-center space-x-2">
+                    <input
+                      type="text"
+                      value={item}
+                      onChange={(e) => updateListField(setPairingSuggestions, idx, e.target.value)}
+                      placeholder="e.g. Kashmiri Kahwa, High Tea, Cheese Board"
+                      className="flex-1 px-3 py-1.5 text-xs bg-[#FAF8F5] border border-[#DDD4C3] rounded-md"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeListFieldItem(setPairingSuggestions, idx)}
+                      className="p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Ideal For */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-xs font-semibold uppercase tracking-wider text-[#4A3E37]">
+                  Ideal For / Best Occasions
+                </label>
+                <button
+                  type="button"
+                  onClick={() => addListFieldItem(setIdealFor)}
+                  className="text-xs text-[#A85A2A] hover:underline flex items-center cursor-pointer"
+                >
+                  <Plus className="w-3.5 h-3.5 mr-0.5" />
+                  <span>Add Occasion</span>
+                </button>
+              </div>
+
+              <div className="space-y-2">
+                {idealFor.map((item, idx) => (
+                  <div key={idx} className="flex items-center space-x-2">
+                    <input
+                      type="text"
+                      value={item}
+                      onChange={(e) => updateListField(setIdealFor, idx, e.target.value)}
+                      placeholder="e.g. Corporate hampers, Festive gifting, Desk snacking"
+                      className="flex-1 px-3 py-1.5 text-xs bg-[#FAF8F5] border border-[#DDD4C3] rounded-md"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeListFieldItem(setIdealFor, idx)}
+                      className="p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -610,7 +761,7 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
             </div>
           </div>
 
-          {/* Product Image Card */}
+          {/* Product Main Image Card */}
           <div className="bg-white border border-[#E6DEC8] rounded-xl p-6 shadow-sm space-y-4">
             <h3 className="font-serif text-base font-bold text-[#1A1412] border-b border-[#F2ECE1] pb-3">
               Product Main Image
@@ -675,6 +826,138 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
               />
             </div>
           </div>
+
+          {/* Product Gallery Images Card */}
+          <div className="bg-white border border-[#E6DEC8] rounded-xl p-6 shadow-sm space-y-4">
+            <div className="flex items-center justify-between border-b border-[#F2ECE1] pb-3">
+              <div>
+                <h3 className="font-serif text-base font-bold text-[#1A1412]">
+                  Gallery Images
+                </h3>
+                <p className="text-[11px] text-[#8A7E75]">
+                  {additionalImages.length} additional angle(s) / packaging photos
+                </p>
+              </div>
+              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-[#FAF8F5] border border-[#DDD4C3] rounded text-[#A85A2A]">
+                Gallery
+              </span>
+            </div>
+
+            {/* Upload Gallery Files */}
+            <div>
+              <input
+                type="file"
+                ref={galleryFileInputRef}
+                accept="image/jpeg,image/png,image/webp"
+                multiple
+                onChange={handleGalleryFileChange}
+                className="hidden"
+                id="gallery-images-upload"
+              />
+              <button
+                type="button"
+                disabled={isGalleryUploading}
+                onClick={() => galleryFileInputRef.current?.click()}
+                className="w-full py-2 px-3 bg-[#FAF8F5] hover:bg-[#F2ECE1] border border-[#DDD4C3] text-[#1A1412] text-xs font-semibold rounded-md shadow-2xs transition-colors flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-60"
+              >
+                {isGalleryUploading ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin text-[#C59B3F]" />
+                    <span>Uploading to Gallery...</span>
+                  </>
+                ) : (
+                  <>
+                    <Images className="w-3.5 h-3.5 text-[#C59B3F]" />
+                    <span>Upload Gallery Photos</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Gallery Thumbnail List with reordering & deletion */}
+            {additionalImages.length > 0 ? (
+              <div className="space-y-3 pt-2">
+                {additionalImages.map((imgUrl, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2 p-2 bg-[#FAF8F5] border border-[#E6DEC8] rounded-lg group"
+                  >
+                    {/* Thumbnail preview */}
+                    <div className="relative w-12 h-12 rounded overflow-hidden bg-white border border-[#DDD4C3] shrink-0">
+                      {imgUrl ? (
+                        <Image
+                          src={imgUrl}
+                          alt={`Gallery ${idx + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-[10px] text-[#8A7E75]">
+                          Empty
+                        </div>
+                      )}
+                    </div>
+
+                    {/* URL Input */}
+                    <input
+                      type="text"
+                      value={imgUrl}
+                      onChange={(e) => updateGalleryImageUrl(idx, e.target.value)}
+                      placeholder="/images/products/..."
+                      className="flex-1 min-w-0 px-2 py-1 text-[11px] bg-white border border-[#DDD4C3] rounded font-mono truncate"
+                    />
+
+                    {/* Reorder Up */}
+                    <button
+                      type="button"
+                      disabled={idx === 0}
+                      onClick={() => moveGalleryImage(idx, 'up')}
+                      title="Move up"
+                      className="p-1 text-[#4A3E37] hover:text-[#1A1412] hover:bg-white rounded disabled:opacity-30 cursor-pointer"
+                    >
+                      <ArrowUp className="w-3.5 h-3.5" />
+                    </button>
+
+                    {/* Reorder Down */}
+                    <button
+                      type="button"
+                      disabled={idx === additionalImages.length - 1}
+                      onClick={() => moveGalleryImage(idx, 'down')}
+                      title="Move down"
+                      className="p-1 text-[#4A3E37] hover:text-[#1A1412] hover:bg-white rounded disabled:opacity-30 cursor-pointer"
+                    >
+                      <ArrowDown className="w-3.5 h-3.5" />
+                    </button>
+
+                    {/* Delete */}
+                    <button
+                      type="button"
+                      onClick={() => removeGalleryImage(idx)}
+                      title="Delete image"
+                      className="p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded cursor-pointer"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-4 border border-dashed border-[#DDD4C3] rounded-lg">
+                <Images className="w-6 h-6 text-[#8A7E75]/60 mx-auto mb-1" />
+                <p className="text-xs text-[#8A7E75]">No additional gallery photos added yet.</p>
+              </div>
+            )}
+
+            {/* Add by URL button */}
+            <button
+              type="button"
+              onClick={addGalleryImageUrl}
+              className="w-full py-1.5 text-xs text-[#A85A2A] hover:bg-[#FAF8F5] border border-dashed border-[#DDD4C3] rounded-md flex items-center justify-center space-x-1 cursor-pointer"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Add Image URL Row</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -721,10 +1004,49 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
                   2. Product Detail Page Preview
                 </span>
 
-                <div className="bg-white border border-[#E6DEC8] rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                  <div className="relative aspect-square rounded-lg overflow-hidden bg-[#FAF8F5]">
-                    <Image src={previewProduct.image} alt="preview" fill className="object-cover" />
+                <div className="bg-white border border-[#E6DEC8] rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                  <div className="space-y-3">
+                    <div className="relative aspect-square rounded-lg overflow-hidden bg-[#FAF8F5] border border-[#E6DEC8]">
+                      <Image
+                        src={previewActiveImage || previewProduct.image}
+                        alt="preview"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+
+                    {/* Gallery Thumbnails */}
+                    {previewProduct.additionalImages && previewProduct.additionalImages.length > 0 && (
+                      <div className="flex items-center gap-2 overflow-x-auto pb-1">
+                        <button
+                          type="button"
+                          onClick={() => setPreviewActiveImage(previewProduct.image)}
+                          className={`relative w-14 h-14 rounded-md overflow-hidden shrink-0 border-2 transition-all ${
+                            (previewActiveImage === '' || previewActiveImage === previewProduct.image)
+                              ? 'border-[#C59B3F] shadow'
+                              : 'border-transparent opacity-70 hover:opacity-100'
+                          }`}
+                        >
+                          <Image src={previewProduct.image} alt="main thumbnail" fill className="object-cover" />
+                        </button>
+                        {previewProduct.additionalImages.map((img, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => setPreviewActiveImage(img)}
+                            className={`relative w-14 h-14 rounded-md overflow-hidden shrink-0 border-2 transition-all ${
+                              previewActiveImage === img
+                                ? 'border-[#C59B3F] shadow'
+                                : 'border-transparent opacity-70 hover:opacity-100'
+                            }`}
+                          >
+                            <Image src={img} alt={`thumb ${idx}`} fill className="object-cover" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
+
                   <div className="space-y-3">
                     <span className="text-xs text-[#C59B3F] font-bold uppercase tracking-wider">
                       {previewProduct.flavour}
@@ -745,6 +1067,21 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
                         </span>
                       ))}
                     </div>
+
+                    {previewProduct.pairingSuggestions && previewProduct.pairingSuggestions.length > 0 && (
+                      <div className="pt-2">
+                        <span className="text-[11px] font-bold text-[#1A1412] uppercase tracking-wider block mb-1">
+                          Pairs Well With:
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {previewProduct.pairingSuggestions.map((p, i) => (
+                            <span key={i} className="text-[10px] bg-[#FAF8F5] text-[#4A3E37] border border-[#E6DEC8] px-2 py-0.5 rounded">
+                              {p}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -754,7 +1091,7 @@ export default function ProductEditor({ initialProduct, isEditing = false }: Pro
               <button
                 type="button"
                 onClick={() => setPreviewOpen(false)}
-                className="px-5 py-2 bg-[#1A1412] text-white text-xs font-semibold rounded-md"
+                className="px-5 py-2 bg-[#1A1412] text-white text-xs font-semibold rounded-md cursor-pointer"
               >
                 Close Preview
               </button>

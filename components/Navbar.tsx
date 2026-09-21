@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Phone, MessageCircle, ArrowRight } from 'lucide-react';
-import { useEnquiry } from './EnquiryContext';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
+import { getGeneralWhatsAppUrl } from '@/lib/whatsapp';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const NAV_LINKS = [
   { name: 'Home', href: '/' },
@@ -20,7 +21,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { openEnquiryModal } = useEnquiry();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,44 +114,23 @@ export default function Navbar() {
 
             {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center space-x-3">
-              <a
-                href="https://wa.me/919909799369?text=Hello%20HariPrasadam,%20I%20would%20like%20to%20enquire%20about%20your%20products/gifting%20collection."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full text-[#25D366] hover:bg-[#25D366]/10 border border-[#25D366]/30 transition-colors"
-                title="WhatsApp HariPrasadam"
-                aria-label="WhatsApp HariPrasadam"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
-
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Corporate Gifting',
-                    sourcePage: pathname,
-                  })
-                }
-                className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold tracking-wide text-[#FAF8F5] bg-[#1A1412] hover:bg-[#2C221E] rounded-md shadow-sm transition-all duration-200 cursor-pointer border border-[#C59B3F]/40"
-              >
-                <span>Enquire Now</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-[#C59B3F]" />
-              </button>
+              <WhatsAppButton
+                label="WhatsApp Us"
+                variant="primary"
+                type="general"
+                className="px-5 py-2.5 text-sm font-semibold"
+              />
             </div>
 
             {/* Mobile Menu Button */}
             <div className="flex items-center space-x-2 lg:hidden">
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Corporate Gifting',
-                    sourcePage: pathname,
-                  })
-                }
-                className="px-3.5 py-1.5 text-xs font-semibold text-[#FAF8F5] bg-[#1A1412] rounded-md border border-[#C59B3F]/30"
-              >
-                Enquire
-              </button>
+              <WhatsAppButton
+                label="WhatsApp"
+                variant="primary"
+                type="general"
+                size="sm"
+                className="font-semibold text-xs"
+              />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 text-[#1A1412] hover:text-[#A85A2A] rounded-md transition-colors"
@@ -186,29 +165,12 @@ export default function Navbar() {
             </div>
 
             <div className="pt-3 border-t border-[#E6DEC8] flex flex-col space-y-2.5">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openEnquiryModal({
-                    enquiryType: 'Corporate Gifting',
-                    sourcePage: pathname,
-                  });
-                }}
-                className="w-full py-3 bg-[#1A1412] text-[#FAF8F5] text-sm font-semibold rounded-md flex items-center justify-center space-x-2 shadow"
-              >
-                <span>Enquire Now</span>
-                <ArrowRight className="w-4 h-4 text-[#C59B3F]" />
-              </button>
-
-              <a
-                href="https://wa.me/919909799369?text=Hello%20HariPrasadam,%20I%20would%20like%20to%20enquire%20about%20your%20products/gifting%20collection."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3 bg-[#25D366] text-white text-sm font-semibold rounded-md flex items-center justify-center space-x-2 shadow"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span>Chat on WhatsApp (+91 9909 799369)</span>
-              </a>
+              <WhatsAppButton
+                label="WhatsApp Us (+91 9909 799369)"
+                variant="primary"
+                type="general"
+                className="w-full py-3 text-sm font-semibold shadow"
+              />
             </div>
           </div>
         )}

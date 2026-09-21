@@ -13,7 +13,6 @@ import {
   HeartHandshake,
   CheckCircle2,
 } from 'lucide-react';
-import { useEnquiry } from '@/components/EnquiryContext';
 import { Product, Category, GiftBox, ComboItem } from '@/lib/types';
 import SectionHeading from '@/components/SectionHeading';
 import GiftCard from '@/components/GiftCard';
@@ -45,7 +44,6 @@ export default function HomePageClient({
   giftBoxes,
   combos,
 }: HomePageClientProps) {
-  const { openEnquiryModal } = useEnquiry();
   const [activeFlavourTab, setActiveFlavourTab] = useState('Honey Rose');
 
   const signatureProducts = products.filter((p) =>
@@ -93,17 +91,13 @@ export default function HomePageClient({
                 <ArrowRight className="w-4 h-4 text-[#C59B3F]" />
               </Link>
 
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Corporate Gifting',
-                    sourcePage: '/',
-                  })
-                }
-                className="px-7 py-3.5 bg-white hover:bg-[#FAF8F5] text-[#1A1412] text-sm font-semibold rounded-md border border-[#DDD4C3] shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer"
-              >
-                <span>Enquire Now</span>
-              </button>
+              <WhatsAppButton
+                type="general"
+                label="Enquire on WhatsApp"
+                variant="primary"
+                size="lg"
+                className="font-semibold shadow-sm"
+              />
             </div>
 
             {/* Quick Metrics Bar */}
@@ -365,19 +359,14 @@ export default function HomePageClient({
                       <ArrowRight className="w-3.5 h-3.5 ml-1" />
                     </Link>
 
-                    <button
-                      onClick={() =>
-                        openEnquiryModal({
-                          enquiryType: 'Product Enquiry',
-                          productName: product.name,
-                          sourcePage: '/',
-                          initialMessage: `I am enquiring about ${product.name} (${product.flavour}). Please provide details regarding bulk quantities and packaging.`,
-                        })
-                      }
-                      className="px-3 py-1.5 bg-[#C59B3F] hover:bg-[#b88c32] text-[#140F0E] text-xs font-semibold rounded transition-colors"
-                    >
-                      Enquire
-                    </button>
+                    <WhatsAppButton
+                      type="product"
+                      targetName={product.name}
+                      flavour={product.flavour}
+                      label="Enquire"
+                      variant="gold"
+                      size="sm"
+                    />
                   </div>
                 </div>
               ))}
@@ -490,19 +479,13 @@ export default function HomePageClient({
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-[#F2ECE1]">
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Festive Gifting',
-                    sourcePage: '/',
-                    initialMessage: 'I would like to enquire about festive dry fruit gift hampers.',
-                  })
-                }
-                className="text-xs font-semibold text-[#1A1412] hover:text-[#C59B3F] transition-colors flex items-center"
-              >
-                <span>Enquire Festive Hampers</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1" />
-              </button>
+              <WhatsAppButton
+                message="Hello HariPrasadam, I'm interested in festive dry fruit gift hampers for Diwali/celebrations. Please share details."
+                label="Enquire on WhatsApp"
+                variant="secondary"
+                size="sm"
+                className="w-full"
+              />
             </div>
           </div>
 
@@ -525,14 +508,20 @@ export default function HomePageClient({
                 Refined corporate presentation boxes with option for branded sleeves, custom greeting inserts, and customized jar selections tailored to your organization.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#F2ECE1]">
+            <div className="mt-6 pt-4 border-t border-[#F2ECE1] flex items-center justify-between gap-2">
               <Link
                 href="/corporate"
                 className="text-xs font-semibold text-[#1A1412] hover:text-[#C59B3F] transition-colors flex items-center"
               >
-                <span>Explore Corporate Solutions</span>
+                <span>View Solutions</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Link>
+              <WhatsAppButton
+                type="corporate"
+                label="WhatsApp Desk"
+                variant="secondary"
+                size="sm"
+              />
             </div>
           </div>
 
@@ -556,19 +545,13 @@ export default function HomePageClient({
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-[#F2ECE1]">
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Customization',
-                    sourcePage: '/',
-                    initialMessage: 'I am looking for personalized premium dry fruit boxes for personal gifting.',
-                  })
-                }
-                className="text-xs font-semibold text-[#1A1412] hover:text-[#C59B3F] transition-colors flex items-center"
-              >
-                <span>Request Personal Curation</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1" />
-              </button>
+              <WhatsAppButton
+                message="Hello HariPrasadam, I'm looking for personalized dry fruit gift boxes for personal gifting. Please share options."
+                label="Enquire on WhatsApp"
+                variant="secondary"
+                size="sm"
+                className="w-full"
+              />
             </div>
           </div>
         </div>
@@ -594,25 +577,18 @@ export default function HomePageClient({
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Corporate Gifting',
-                    sourcePage: '/',
-                    initialMessage: 'I would like to discuss a bulk/corporate order requirement with HariPrasadam.',
-                  })
-                }
-                className="px-7 py-3.5 bg-[#C59B3F] hover:bg-[#b88c32] text-[#140F0E] text-sm font-semibold rounded-md shadow transition-colors flex items-center justify-center space-x-2 cursor-pointer"
-              >
-                <span>Discuss Your Requirement</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <WhatsAppButton
+                type="corporate"
+                label="Discuss Your Requirement"
+                variant="gold"
+                size="lg"
+              />
 
               <WhatsAppButton
-                variant="outline"
+                type="general"
                 label="Quick WhatsApp Enquiry"
-                message="Hello HariPrasadam, I am interested in placing a bulk order / corporate enquiry."
-                className="py-3.5 px-6 text-sm"
+                variant="outline"
+                size="lg"
               />
             </div>
           </div>

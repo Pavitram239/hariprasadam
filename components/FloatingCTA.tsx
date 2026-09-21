@@ -1,35 +1,36 @@
 'use client';
 
-import React from 'react';
-import { MessageCircle, MailQuestion } from 'lucide-react';
-import { useEnquiry } from './EnquiryContext';
+import React, { useState } from 'react';
+import { MessageCircle } from 'lucide-react';
+import { getGeneralWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function FloatingCTA() {
-  const { openEnquiryModal } = useEnquiry();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col sm:flex-row items-end sm:items-center space-y-2.5 sm:space-y-0 sm:space-x-3">
-      {/* Enquire floating trigger */}
-      <button
-        onClick={() => openEnquiryModal({ enquiryType: 'Corporate Gifting' })}
-        className="flex items-center space-x-2 bg-[#1A1412] hover:bg-[#2A201C] text-[#FAF8F5] px-4 py-2.5 rounded-full shadow-lg border border-[#C59B3F]/40 transition-all duration-200 hover:scale-105 cursor-pointer text-xs font-semibold tracking-wide"
-        aria-label="Open enquiry form"
+    <div className="fixed bottom-6 right-6 z-40 flex items-center">
+      {/* Subtle tooltip on hover / desktop */}
+      <div
+        className={`hidden sm:block mr-3 px-3 py-1.5 rounded-lg bg-[#1A1412] text-[#FAF8F5] text-xs font-medium border border-[#C59B3F]/40 shadow-lg transition-all duration-200 pointer-events-none ${
+          isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
+        }`}
       >
-        <MailQuestion className="w-4 h-4 text-[#C59B3F]" />
-        <span className="hidden sm:inline">Enquire Now</span>
-        <span className="sm:hidden">Enquire</span>
-      </button>
+        <span className="text-[#C59B3F] font-semibold">Chat with us</span> • Quick WhatsApp Enquiry
+      </div>
 
-      {/* WhatsApp floating trigger */}
+      {/* Floating WhatsApp Bubble */}
       <a
-        href="https://wa.me/919909799369?text=Hello%20HariPrasadam,%20I%20would%20like%20to%20enquire%20about%20your%20products/gifting%20collection."
+        href={getGeneralWhatsAppUrl()}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-4 py-2.5 rounded-full shadow-lg transition-all duration-200 hover:scale-105 cursor-pointer text-xs font-semibold tracking-wide"
-        aria-label="Chat on WhatsApp"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="group relative flex items-center justify-center w-13 h-13 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+        aria-label="Enquire with HariPrasadam on WhatsApp"
       >
-        <MessageCircle className="w-4 h-4 fill-white" />
-        <span className="hidden sm:inline">WhatsApp</span>
+        {/* Gentle Pulse Halo */}
+        <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping pointer-events-none group-hover:opacity-0" />
+        <MessageCircle className="w-6 h-6 fill-white text-white relative z-10" />
       </a>
     </div>
   );

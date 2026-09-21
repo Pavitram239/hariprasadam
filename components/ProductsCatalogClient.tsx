@@ -6,7 +6,7 @@ import { Search } from 'lucide-react';
 import { Product, Category } from '@/lib/types';
 import ProductCard from '@/components/ProductCard';
 import SectionHeading from '@/components/SectionHeading';
-import { useEnquiry } from '@/components/EnquiryContext';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 interface ProductsCatalogClientProps {
   initialProducts: Product[];
@@ -16,7 +16,6 @@ interface ProductsCatalogClientProps {
 function ProductsCatalogContent({ initialProducts, categories }: ProductsCatalogClientProps) {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category');
-  const { openEnquiryModal } = useEnquiry();
 
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,7 +24,6 @@ function ProductsCatalogContent({ initialProducts, categories }: ProductsCatalog
   // Dynamic category pill list from database categories
   const categoryNames = useMemo(() => {
     const names = categories.map((c) => c.name);
-    // If not in database categories, still add from products
     initialProducts.forEach((p) => {
       if (!names.includes(p.category)) {
         names.push(p.category);
@@ -172,18 +170,12 @@ function ProductsCatalogContent({ initialProducts, categories }: ProductsCatalog
           All products in our catalogue are available in custom jar weights (100g, 175g–200g, or bulk kg packing) with customized corporate labels and branding.
         </p>
         <div>
-          <button
-            onClick={() =>
-              openEnquiryModal({
-                enquiryType: 'Customization',
-                sourcePage: '/products',
-                initialMessage: 'I would like to enquire about customized product packs and jar weights.',
-              })
-            }
-            className="px-6 py-2.5 bg-[#1A1412] hover:bg-[#2C221E] text-[#FAF8F5] text-xs font-semibold rounded-md transition-colors cursor-pointer"
-          >
-            Enquire About Customization
-          </button>
+          <WhatsAppButton
+            message="Hello HariPrasadam, I'm interested in customized product packs, flavours, and jar weights for gifting."
+            label="Enquire on WhatsApp"
+            variant="secondary"
+            size="md"
+          />
         </div>
       </div>
     </div>

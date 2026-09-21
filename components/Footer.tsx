@@ -3,13 +3,10 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, Globe, ArrowRight, ShieldCheck } from 'lucide-react';
-import { useEnquiry } from './EnquiryContext';
+import { MapPin, Phone, Mail, Globe, ShieldCheck } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 
 export default function Footer() {
-  const { openEnquiryModal } = useEnquiry();
-
   return (
     <footer className="bg-[#140F0E] text-[#FAF8F5] border-t border-[#C59B3F]/20 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,15 +38,12 @@ export default function Footer() {
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => openEnquiryModal({ enquiryType: 'Corporate Gifting' })}
-                className="inline-flex items-center px-4 py-2 bg-[#C59B3F] hover:bg-[#b58c35] text-[#140F0E] font-semibold text-xs tracking-wider uppercase rounded transition-colors"
-              >
-                <span>Enquire Now</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-              </button>
-
-              <WhatsAppButton variant="outline" label="WhatsApp" className="text-xs py-2 px-3.5" />
+              <WhatsAppButton
+                variant="primary"
+                type="general"
+                label="WhatsApp Us"
+                className="text-xs font-semibold py-2.5 px-5"
+              />
             </div>
           </div>
 
@@ -173,7 +167,7 @@ export default function Footer() {
           <div className="flex items-center space-x-4">
             <span>Surat, Gujarat</span>
             <span>•</span>
-            <Link href="/admin/enquiries" className="hover:text-[#C59B3F] transition-colors flex items-center space-x-1">
+            <Link href="/admin" className="hover:text-[#C59B3F] transition-colors flex items-center space-x-1">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Admin Portal</span>
             </Link>

@@ -2,12 +2,11 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { CATALOGUE_PACKAGING } from '@/lib/giftingData';
 import { GiftBox } from '@/lib/types';
 import GiftCard from '@/components/GiftCard';
 import SectionHeading from '@/components/SectionHeading';
-import { useEnquiry } from '@/components/EnquiryContext';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 interface GiftingPageClientProps {
@@ -15,7 +14,6 @@ interface GiftingPageClientProps {
 }
 
 export default function GiftingPageClient({ giftBoxes }: GiftingPageClientProps) {
-  const { openEnquiryModal } = useEnquiry();
   const [activePackagingTab, setActivePackagingTab] = useState<'all' | 'gift-box' | 'branded-jute' | 'plain-jute' | 'pocket-mix'>('all');
 
   const filteredPackaging = CATALOGUE_PACKAGING.filter((item) => {
@@ -50,25 +48,18 @@ export default function GiftingPageClient({ giftBoxes }: GiftingPageClientProps)
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Festive Gifting',
-                    sourcePage: '/gifting',
-                    initialMessage: 'I am interested in ordering curated gift boxes from the 2026 Gifting Collection.',
-                  })
-                }
-                className="px-7 py-3.5 bg-[#C59B3F] hover:bg-[#b88c32] text-[#140F0E] text-sm font-semibold rounded-md shadow transition-colors flex items-center justify-center space-x-2 cursor-pointer"
-              >
-                <span>Enquire 2026 Collection</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <WhatsAppButton
+                message="Hello HariPrasadam, I'm interested in the 2026 Gifting Collection. Please share the details and options."
+                label="Enquire on WhatsApp"
+                variant="gold"
+                size="lg"
+              />
 
               <WhatsAppButton
                 variant="secondary"
                 label="WhatsApp Gifting Desk"
                 message="Hello HariPrasadam, I would like to enquire about your 2026 Gifting Collection and bulk pricing."
-                className="py-3.5 px-6 text-sm"
+                size="lg"
               />
             </div>
           </div>
@@ -191,19 +182,14 @@ export default function GiftingPageClient({ giftBoxes }: GiftingPageClientProps)
                 </div>
 
                 <div className="p-5 pt-2">
-                  <button
-                    onClick={() =>
-                      openEnquiryModal({
-                        enquiryType: 'Corporate Gifting',
-                        productName: `${item.title} (₹${item.price}/-)`,
-                        sourcePage: '/gifting',
-                        initialMessage: `I am interested in ordering ${item.title} (₹${item.price}/-). Please provide availability, minimum order quantity, and lead time.`,
-                      })
-                    }
-                    className="w-full py-2 px-3 bg-[#FAF8F5] hover:bg-[#1A1412] text-[#1A1412] hover:text-[#FAF8F5] text-xs font-semibold rounded border border-[#DDD4C3] transition-colors cursor-pointer"
-                  >
-                    Enquire This Option
-                  </button>
+                  <WhatsAppButton
+                    type="gift"
+                    targetName={`${item.title} (₹${item.price}/-)`}
+                    label="Enquire on WhatsApp"
+                    variant="secondary"
+                    size="sm"
+                    className="w-full"
+                  />
                 </div>
               </div>
             ))}
@@ -229,22 +215,16 @@ export default function GiftingPageClient({ giftBoxes }: GiftingPageClientProps)
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
-            <button
-              onClick={() =>
-                openEnquiryModal({
-                  enquiryType: 'Corporate Gifting',
-                  sourcePage: '/gifting',
-                  initialMessage: 'I would like to discuss a bulk gifting requirement with HariPrasadam.',
-                })
-              }
-              className="px-6 py-3.5 bg-[#C59B3F] hover:bg-[#b88c32] text-[#140F0E] text-xs font-bold uppercase tracking-wider rounded transition-colors text-center cursor-pointer"
-            >
-              Discuss Custom Gifting
-            </button>
+            <WhatsAppButton
+              type="corporate"
+              label="Discuss Custom Gifting"
+              variant="gold"
+              size="lg"
+            />
             <WhatsAppButton
               variant="outline"
               label="WhatsApp Enquiry"
-              className="py-3.5 px-5 text-xs font-semibold"
+              size="lg"
             />
           </div>
         </div>

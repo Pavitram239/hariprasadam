@@ -3,17 +3,15 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sparkles, ArrowRight, Check } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 import { Product } from '@/lib/types';
-import { useEnquiry } from './EnquiryContext';
+import WhatsAppButton from './WhatsAppButton';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { openEnquiryModal } = useEnquiry();
-
   return (
     <div className="group bg-white border border-[#E6DEC8] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
       <div>
@@ -54,16 +52,18 @@ export default function ProductCard({ product }: ProductCardProps) {
           </p>
 
           {/* Taste Notes Pills */}
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            {product.tasteProfile.slice(0, 3).map((taste) => (
-              <span
-                key={taste}
-                className="text-[11px] bg-[#FAF8F5] text-[#5A4D45] px-2 py-0.5 rounded border border-[#E6DEC8]"
-              >
-                {taste}
-              </span>
-            ))}
-          </div>
+          {product.tasteProfile && product.tasteProfile.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-3">
+              {product.tasteProfile.slice(0, 3).map((taste) => (
+                <span
+                  key={taste}
+                  className="text-[11px] bg-[#FAF8F5] text-[#5A4D45] px-2 py-0.5 rounded border border-[#E6DEC8]"
+                >
+                  {taste}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -77,19 +77,15 @@ export default function ProductCard({ product }: ProductCardProps) {
           <ArrowRight className="w-3 h-3 ml-1" />
         </Link>
 
-        <button
-          onClick={() =>
-            openEnquiryModal({
-              enquiryType: 'Product Enquiry',
-              productName: product.name,
-              sourcePage: `/products/${product.slug}`,
-              initialMessage: `I am interested in ordering/enquiring about ${product.name} (${product.category} - ${product.flavour}). Please provide available packaging and pricing.`,
-            })
-          }
-          className="px-3.5 py-1.5 bg-[#1A1412] hover:bg-[#2C221E] text-[#FAF8F5] text-xs font-medium rounded transition-colors cursor-pointer border border-[#C59B3F]/30"
-        >
-          Enquire
-        </button>
+        <WhatsAppButton
+          type="product"
+          targetName={product.name}
+          flavour={product.flavour}
+          label="Enquire"
+          variant="secondary"
+          size="sm"
+          className="font-medium hover:text-[#C59B3F]"
+        />
       </div>
     </div>
   );

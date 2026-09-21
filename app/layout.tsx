@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-import { EnquiryProvider } from '@/components/EnquiryContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import EnquiryModal from '@/components/EnquiryModal';
 import FloatingCTA from '@/components/FloatingCTA';
 
 const playfair = Playfair_Display({
@@ -82,13 +80,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${jakarta.variable} antialiased`}>
       <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1A1412] font-sans">
-        <EnquiryProvider>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <EnquiryModal />
-          <FloatingCTA />
-        </EnquiryProvider>
+        <Navbar />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+        <FloatingCTA />
       </body>
     </html>
   );

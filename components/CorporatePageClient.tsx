@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Building2, ArrowRight, Briefcase, Users, Award, Palette } from 'lucide-react';
+import { Building2, Briefcase, Users, Award, Palette } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
-import { useEnquiry } from '@/components/EnquiryContext';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { GiftBox } from '@/lib/types';
 import GiftCard from '@/components/GiftCard';
@@ -60,8 +59,6 @@ interface CorporatePageClientProps {
 }
 
 export default function CorporatePageClient({ giftBoxes }: CorporatePageClientProps) {
-  const { openEnquiryModal } = useEnquiry();
-
   return (
     <div className="space-y-20 sm:space-y-28 pb-24">
       {/* Hero */}
@@ -87,25 +84,18 @@ export default function CorporatePageClient({ giftBoxes }: CorporatePageClientPr
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <button
-                onClick={() =>
-                  openEnquiryModal({
-                    enquiryType: 'Corporate Gifting',
-                    sourcePage: '/corporate',
-                    initialMessage: 'I would like to discuss corporate gifting options for our company.',
-                  })
-                }
-                className="px-7 py-3.5 bg-[#C59B3F] hover:bg-[#b88c32] text-[#140F0E] text-sm font-semibold rounded-md shadow transition-colors flex items-center justify-center space-x-2 cursor-pointer"
-              >
-                <span>Discuss Your Requirement</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <WhatsAppButton
+                type="corporate"
+                label="Discuss Your Requirement"
+                variant="gold"
+                size="lg"
+              />
 
               <WhatsAppButton
                 variant="secondary"
                 label="WhatsApp Corporate Desk"
                 message="Hello HariPrasadam, I would like to discuss corporate gifting for our organization."
-                className="py-3.5 px-6 text-sm"
+                size="lg"
               />
             </div>
           </div>
@@ -185,19 +175,13 @@ export default function CorporatePageClient({ giftBoxes }: CorporatePageClientPr
           </div>
 
           <div className="mt-12 text-center">
-            <button
-              onClick={() =>
-                openEnquiryModal({
-                  enquiryType: 'Corporate Gifting',
-                  sourcePage: '/corporate',
-                  initialMessage: 'I am ready to share corporate gifting requirements for my company.',
-                })
-              }
-              className="px-8 py-3.5 bg-[#1A1412] hover:bg-[#2C221E] text-[#FAF8F5] text-sm font-semibold rounded-md shadow transition-colors inline-flex items-center space-x-2 border border-[#C59B3F]/40 cursor-pointer"
-            >
-              <span>Start Step 01: Share Your Requirement</span>
-              <ArrowRight className="w-4 h-4 text-[#C59B3F]" />
-            </button>
+            <WhatsAppButton
+              type="corporate"
+              label="Discuss Your Requirement on WhatsApp"
+              variant="secondary"
+              size="lg"
+              className="font-semibold shadow-md"
+            />
           </div>
         </div>
       </section>
@@ -233,21 +217,16 @@ export default function CorporatePageClient({ giftBoxes }: CorporatePageClientPr
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <button
-              onClick={() =>
-                openEnquiryModal({
-                  enquiryType: 'Corporate Gifting',
-                  sourcePage: '/corporate',
-                })
-              }
-              className="px-6 py-3 bg-[#C59B3F] hover:bg-[#b88c32] text-[#140F0E] text-xs font-bold uppercase tracking-wider rounded transition-colors cursor-pointer"
-            >
-              Discuss Your Requirement
-            </button>
+            <WhatsAppButton
+              type="corporate"
+              label="Discuss Your Requirement"
+              variant="gold"
+              size="md"
+            />
             <WhatsAppButton
               variant="outline"
               label="WhatsApp Us"
-              className="py-3 px-5 text-xs font-semibold"
+              size="md"
             />
           </div>
         </div>

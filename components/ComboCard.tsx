@@ -2,16 +2,13 @@
 
 import React from 'react';
 import { ComboItem } from '@/lib/types';
-import { useEnquiry } from './EnquiryContext';
-import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 interface ComboCardProps {
   combo: ComboItem;
 }
 
 export default function ComboCard({ combo }: ComboCardProps) {
-  const { openEnquiryModal } = useEnquiry();
-
   return (
     <div className="bg-white border border-[#E6DEC8] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
       <div>
@@ -62,20 +59,14 @@ export default function ComboCard({ combo }: ComboCardProps) {
 
       {/* CTA Button */}
       <div className="mt-6 pt-3">
-        <button
-          onClick={() =>
-            openEnquiryModal({
-              enquiryType: 'Corporate Gifting',
-              productName: `${combo.subtitle}: ${combo.name} (${combo.occasion})`,
-              sourcePage: '/',
-              initialMessage: `I would like to enquire about ${combo.subtitle}: ${combo.name} (${combo.occasion}). Please share available packaging options, minimum quantities, and pricing.`,
-            })
-          }
-          className="w-full py-2.5 px-4 bg-[#FAF8F5] hover:bg-[#1A1412] text-[#1A1412] hover:text-[#FAF8F5] text-xs font-semibold rounded-md border border-[#DDD4C3] hover:border-[#1A1412] transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer"
-        >
-          <span>Enquire About This Combo</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#C59B3F]" />
-        </button>
+        <WhatsAppButton
+          type="combo"
+          targetName={combo.name}
+          label="Enquire on WhatsApp"
+          variant="secondary"
+          size="sm"
+          className="w-full py-2.5 font-semibold hover:border-[#1A1412]"
+        />
       </div>
     </div>
   );

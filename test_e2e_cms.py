@@ -163,40 +163,53 @@ test("GET /api/admin/gifting succeeds", status == 200, f"Status: {status}")
 status, body, _ = request("/api/admin/combos")
 test("GET /api/admin/combos succeeds", status == 200, f"Status: {status}")
 
-# 6. ENQUIRY FLOW & CRM STATUS
-print("\n--- 6. Testing Enquiry Lead Flow ---")
-test_enquiry = {
-    "name": "Ananya Desai",
-    "phone": "+91 98250 99999",
-    "email": "ananya.desai@suratjewels.com",
-    "company": "Surat Jewels Ltd",
-    "enquiry_type": "Corporate Gifting",
-    "quantity": "150 Boxes",
-    "message": "Testing automated enquiry pipeline for 2026 Gifting Collection.",
-    "source_page": "/gifting",
-    "product_name": "Gift Box 01 - Heritage Suite"
+# 6. WHATSAPP CONVERSION & MULTI-IMAGE GALLERY PERSISTENCE
+print("\n--- 6. Testing WhatsApp Primary Conversion & Gallery CMS ---")
+# Verify WhatsApp link on homepage, product page, contact page
+status, hp_body, _ = request("/")
+test("Homepage contains WhatsApp conversion CTA (919909799369)", status == 200 and "919909799369" in hp_body, f"Status: {status}")
+
+status, prod_body, _ = request("/products/almond-honey-rose")
+test("Product page contains context-aware WhatsApp CTA", status == 200 and "919909799369" in prod_body and "Honey%20Rose" in prod_body, f"Status: {status}")
+
+status, contact_body, _ = request("/contact")
+test("Contact page contains WhatsApp links and NO enquiry form", status == 200 and "919909799369" in contact_body and '<form' not in contact_body, f"Status: {status}")
+
+# Test Multi-Image Gallery persistence via Admin API
+gallery_product = {
+    "name": "Test Multi-Image Pistachio",
+    "slug": "test-multi-image-pistachio",
+    "category": "Almond",
+    "flavour": "Royal Pistachio",
+    "tagline": "Multi-Image Testing",
+    "description": "Product testing multi-image gallery persistence and pairing suggestions.",
+    "tasteProfile": ["Crunchy", "Nutty"],
+    "packagingOptions": ["Luxury Tin 250g"],
+    "features": ["Hand-picked"],
+    "pairingSuggestions": ["Kashmiri Kahwa", "High Tea"],
+    "idealFor": ["Festive hampers", "VIP gifting"],
+    "image": "/images/products/almond-honey-rose.jpg",
+    "additionalImages": [
+        "/images/products/almond-plain.jpg",
+        "/images/products/cashew-peri-peri.jpg"
+    ],
+    "status": "published",
+    "isJain": True
 }
 
-status, body, _ = request("/api/enquire", method="POST", data=test_enquiry)
-test("POST /api/enquire submits new lead", status in [200, 201], f"Status: {status}")
-
-# Admin reads enquiries
-status, body, _ = request("/api/admin/enquiries")
-test("GET /api/admin/enquiries returns submitted lead", status == 200 and "Ananya Desai" in body, f"Status: {status}")
-
-try:
-    enquiries_resp = json.loads(body)
-    enquiries_list = enquiries_resp.get("data", []) if isinstance(enquiries_resp, dict) else enquiries_resp
-    new_enq = next((e for e in enquiries_list if e.get("name") == "Ananya Desai"), None)
-    if new_enq:
-        enq_id = new_enq.get("id")
-        # Update enquiry status to Contacted
-        status, _, _ = request("/api/admin/enquiries", method="PATCH", data={"id": enq_id, "status": "Contacted"})
-        test("PATCH /api/admin/enquiries updates status", status == 200, f"Status: {status}")
-    else:
-        test("PATCH /api/admin/enquiries updates status", False, "Could not find Ananya Desai enquiry")
-except Exception as e:
-    test("PATCH /api/admin/enquiries updates status", False, str(e))
+status, body, _ = request("/api/admin/products", method="POST", data=gallery_product)
+test("POST /api/admin/products creates product with gallery & pairings", status in [200, 201], f"Status: {status}")
+if status in [200, 201]:
+    resp_obj = json.loads(body)
+    gallery_prod_data = resp_obj.get("data", resp_obj) if isinstance(resp_obj, dict) else resp_obj
+    g_id = gallery_prod_data.get("id")
+    has_gallery = len(gallery_prod_data.get("additionalImages", [])) == 2
+    has_pairings = len(gallery_prod_data.get("pairingSuggestions", [])) == 2
+    test("Gallery images & pairings persisted correctly", has_gallery and has_pairings, f"Body: {body}")
+    
+    # Clean up
+    if g_id:
+        request(f"/api/admin/products/{g_id}", method="DELETE")
 
 # 7. LOGOUT
 print("\n--- 7. Testing Logout ---")

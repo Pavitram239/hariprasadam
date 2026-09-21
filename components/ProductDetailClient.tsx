@@ -1,11 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Sparkles, ArrowLeft, Check, Package, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Sparkles, Check, Package, ShieldCheck, ArrowRight, HeartHandshake } from 'lucide-react';
 import { Product } from '@/lib/types';
-import { useEnquiry } from '@/components/EnquiryContext';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ProductCard from '@/components/ProductCard';
 
@@ -18,9 +17,9 @@ export default function ProductDetailClient({
   product,
   relatedProducts,
 }: ProductDetailClientProps) {
-  const { openEnquiryModal } = useEnquiry();
-
-  const whatsappMessage = `Hello HariPrasadam, I am viewing ${product.name} (${product.category} - ${product.flavour}) on your website and would like to enquire about ordering.`;
+  // Gallery images handling: main image + additional images
+  const allImages = [product.image, ...(product.additionalImages || [])].filter(Boolean);
+  const [selectedImage, setSelectedImage] = useState<string>(product.image);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 space-y-16">
@@ -61,16 +60,16 @@ export default function ProductDetailClient({
 
       {/* Main Showcase Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-        {/* Left Column: Product Visuals */}
+        {/* Left Column: Product Visuals & Multi-Image Gallery */}
         <div className="lg:col-span-6 space-y-4">
           <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#F7F4EE] border border-[#E6DEC8] shadow-sm">
             <Image
-              src={product.image}
+              src={selectedImage || product.image}
               alt={product.name}
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center"
+              className="object-cover object-center transition-all duration-300"
             />
             {product.isJain && (
               <div className="absolute top-4 right-4 bg-[#2D4A27] text-white text-xs font-semibold px-3 py-1 rounded-full uppercase shadow-md">
@@ -81,6 +80,33 @@ export default function ProductDetailClient({
               {product.category} Selection
             </div>
           </div>
+
+          {/* Thumbnail strip if multiple images exist */}
+          {allImages.length > 1 && (
+            <div className="flex items-center gap-3 overflow-x-auto pb-2">
+              {allImages.map((img, idx) => {
+                const isCurrent = img === selectedImage;
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setSelectedImage(img)}
+                    className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                      isCurrent ? 'border-[#C59B3F] shadow-sm' : 'border-[#E6DEC8] opacity-70 hover:opacity-100'
+                    }`}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${product.name} gallery image ${idx + 1}`}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
           <div className="bg-[#FAF8F5] border border-[#E6DEC8] rounded-xl p-4 flex items-center justify-between text-xs text-[#63574E]">
             <span className="flex items-center">
@@ -148,6 +174,30 @@ export default function ProductDetailClient({
             </div>
           )}
 
+          {/* Pairing Suggestions if available */}
+          {product.pairingSuggestions && product.pairingSuggestions.length > 0 && (
+            <div className="bg-[#FAF8F5] border border-[#E6DEC8] rounded-xl p-4 space-y-1.5">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#1A1412] block">
+                Pairing Suggestions
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {product.pairingSuggestions.map((item, i) => (
+                  <span key={i} className="text-xs text-[#63574E] bg-white px-2.5 py-1 rounded border border-[#E6DEC8]">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Ideal For if available */}
+          {product.idealFor && product.idealFor.length > 0 && (
+            <div className="flex items-center space-x-2 text-xs text-[#63574E]">
+              <HeartHandshake className="w-4 h-4 text-[#C59B3F] shrink-0" />
+              <span><strong>Ideal For:</strong> {product.idealFor.join(' • ')}</span>
+            </div>
+          )}
+
           {/* Packaging Options from Catalogue */}
           {product.packagingOptions && product.packagingOptions.length > 0 && (
             <div className="bg-white border border-[#E6DEC8] rounded-xl p-4 space-y-2">
@@ -163,27 +213,16 @@ export default function ProductDetailClient({
             </div>
           )}
 
-          {/* Primary Action Buttons */}
-          <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <button
-              onClick={() =>
-                openEnquiryModal({
-                  enquiryType: 'Product Enquiry',
-                  productName: `${product.name} (${product.flavour})`,
-                  sourcePage: `/products/${product.slug}`,
-                  initialMessage: `I would like to enquire about ${product.name} (${product.category} - ${product.flavour}). Please provide available jar options, minimum order, and pricing.`,
-                })
-              }
-              className="flex-1 py-3.5 px-6 bg-[#1A1412] hover:bg-[#2C221E] text-[#FAF8F5] text-sm font-semibold rounded-md shadow-sm transition-all flex items-center justify-center space-x-2 border border-[#C59B3F]/40 cursor-pointer"
-            >
-              <span>Enquire About This Product</span>
-              <ArrowRight className="w-4 h-4 text-[#C59B3F]" />
-            </button>
-
+          {/* Primary WhatsApp Action */}
+          <div className="pt-4">
             <WhatsAppButton
-              label="WhatsApp Us"
-              message={whatsappMessage}
-              className="py-3.5 px-6 text-sm"
+              type="product"
+              targetName={product.name}
+              flavour={product.flavour}
+              label="Enquire on WhatsApp"
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto font-semibold shadow-md"
             />
           </div>
         </div>
