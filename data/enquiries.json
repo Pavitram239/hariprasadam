@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Vikramaditya Singhania",
+    "phone": "+91 98200 99887",
+    "email": "vikram@singhania-holdings.com",
+    "company": "Singhania Holdings",
+    "enquiry_type": "Corporate Gifting",
+    "quantity": "500 Boxes",
+    "message": "We require 500 units of Gift Box 05 (The Grand Collection - 6 Jars) with customized gold-embossed ribbon for our annual leadership meet.",
+    "source_page": "/corporate",
+    "product_name": "Gift Box 05 - The Grand Collection",
+    "status": "Quoted",
+    "id": "2014990e-7800-41f0-8960-ab499b160d4c",
+    "created_at": "2026-09-21T06:31:28.696Z"
+  },
+  {
+    "id": "seed-01",
+    "created_at": "2026-09-21T04:31:28.697Z",
+    "name": "Rajesh Mehta",
+    "phone": "+91 98250 12345",
+    "email": "rajesh.mehta@diamondcorp.in",
+    "company": "Mehta Diamond Exports",
+    "enquiry_type": "Corporate Gifting",
+    "quantity": "250 Boxes",
+    "message": "Looking for 250 units of Gift Box 03 (6 Jar Premium Nuts & Treats) for Diwali corporate client gifting with custom logo ribbon.",
+    "source_page": "/gifting",
+    "product_name": "Gift Box 03 - Premium Nuts & Treats",
+    "status": "New"
+  },
+  {
+    "id": "seed-02",
+    "created_at": "2026-09-20T06:31:28.697Z",
+    "name": "Pooja Shah",
+    "phone": "+91 99798 87654",
+    "email": "pooja.shah@gmail.com",
+    "company": "",
+    "enquiry_type": "Customization",
+    "quantity": "100 Boxes",
+    "message": "Need customized Jain dry fruit boxes for wedding welcome hampers. Interested in Honey Rose and Cheese & Herbs varieties.",
+    "source_page": "/products/almond-honey-rose",
+    "product_name": "Almond Honey Rose",
+    "status": "Contacted"
+  }
+]
